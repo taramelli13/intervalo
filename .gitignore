@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+
+# artigos e dissertacoes ficam locais — referencias completas em Fontes/FONTES.md
+Fontes/*.pdf

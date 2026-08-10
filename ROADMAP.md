@@ -2,7 +2,7 @@
 
 App que estende a presença do nutricionista entre as consultas: comportamentos prescritos na consulta, registro leve no intervalo, relatório de adesão antes do próximo atendimento.
 
-Estado: protocolo clínico fechado na versão 1.3.0, e nenhuma linha de app escrita ainda. Isso é decisão, não atraso ([D-005](DECISOES.md)).
+Estado: protocolo clínico na versão 1.4.0, modelo de dados desenhado, e nenhuma linha de app escrita ainda. Isso é decisão, não atraso ([D-005](DECISOES.md)).
 
 ---
 
@@ -30,7 +30,8 @@ Pendências que bloqueiam uso com paciente:
 
 ## Fase 1, desenho
 
-- [ ] Modelo de dados derivado do seed: paciente, ciclo, comportamento ativo, registro diário, lapso com contexto, aplicação de instrumento, prontuário
+- [x] Modelo de dados derivado do seed, em `MODELO-DE-DADOS.md`: sete entidades de estado, log de eventos, invariantes, e a tabela que prova que o relatório pré-consulta fecha ([D-019](DECISOES.md) a [D-022](DECISOES.md))
+- [x] Regime e alvo semanal de cada comportamento no seed, sem os quais a adesão de meta reduzida não calcula ([D-021](DECISOES.md))
 - [ ] Telas do paciente: registro em menos de 5 segundos, dia furado, surfar o desejo, evolução por tendência
 - [ ] Telas do profissional: consulta 1, prescrição de comportamento, relatório pré-consulta
 - [ ] Modo sem números como estado de primeira classe do modelo, e não como flag de exibição
@@ -55,6 +56,7 @@ Pendências que bloqueiam uso com paciente:
 - [ ] Primeiros pacientes, cada ciclo gravado sob a versão do protocolo que rodou
 - [ ] Métricas dos 30 dias: adesão por comportamento, taxa de registro, automaticidade, recalibragens acionadas, distribuição do TFEQ-14, taxa de acionamento da ECAP, adesão ao DEAS-s
 - [ ] Calibrar o corte de 45 do TFEQ com dado próprio, porque a suspeita é que ele não separe nada neste público
+- [ ] Revisar os alvos semanais padrão dos 42 comportamentos, arbitrados por julgamento clínico e sem uso real ([D-021](DECISOES.md))
 - [ ] Critério de sucesso: o profissional chega na consulta sabendo mais do que sabia antes
 
 ---

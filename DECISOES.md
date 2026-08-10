@@ -240,6 +240,58 @@ Convenção: entrada nova vai no fim, nunca se reescreve entrada antiga. Se uma 
 
 ---
 
+## D-019 · Seed continua arquivo, e a prescrição guarda instantâneo do texto
+**10/08/2026**
+
+**Contexto.** Primeira decisão do modelo de dados: o que o `seed.json` vira no banco. A opção óbvia era transformar comportamento, categoria e técnica em tabelas com chave estrangeira.
+
+**Decisão.** O seed continua arquivo lido em runtime. O banco guarda o id em texto, a versão do protocolo no ciclo, e um instantâneo do texto prescrito dentro da própria prescrição.
+
+**Por quê.** Virar tabela criaria uma segunda fonte de verdade do conteúdo clínico, que é exatamente o que o `validate_seed.py` existe para impedir desde D-006. E D-004 exige saber sob qual versão cada ciclo rodou: com tabela, subir para a 1.5 vira migração de conteúdo versionada; com arquivo, basta o campo `protocolo_versao` e o histórico do git.
+
+**Consequência.** Integridade referencial do conteúdo passa a ser responsabilidade do validador, não do banco — id de comportamento inexistente não é erro de chave estrangeira. Em compensação, a frase que o paciente leu fica congelada mesmo quando o rótulo muda.
+
+---
+
+## D-020 · Registro do paciente em log append-only, estado em tabela
+**10/08/2026**
+
+**Contexto.** O protocolo produz cinco tipos de registro heterogêneos: feito e não feito, lapso com contexto, fome e saciedade antes e depois, fome ou gatilho, surfar o desejo.
+
+**Decisão.** Tudo que o paciente registra vira evento em log append-only, com tipo e conteúdo. Correção é evento novo, nunca `update`. O que muda no lugar — paciente, ciclo, prescrição, plano, cardápio, problema — fica em tabela normal.
+
+**Por quê.** Inserção não gera conflito de sincronização, e tipo novo de registro não pede migração. O protocolo já mudou de forma três vezes em três versões.
+
+**Consequência.** Adesão e taxa de registro viram agregação, não leitura de coluna. Consulta mais chata de escrever, e provavelmente uma tabela derivada quando o volume doer.
+
+---
+
+## D-021 · Alvo semanal explícito — a adesão da versão reduzida era incomputável
+**10/08/2026**
+
+**Contexto.** Ao desenhar como a adesão sairia do banco, apareceu um furo no protocolo. A regra da seção 9 é uma divisão, `dias cumpridos / dias válidos`, mas as versões reduzidas do seed diziam "três dias na semana" em texto corrido. Nenhum denominador legível por máquina.
+
+**Decisão.** Cada comportamento ganha `regime_padrao`, `alvo_por_semana` e `reduzida_por_semana` no seed, com assert no validador. Protocolo sobe para 1.4.0.
+
+**Por quê.** Sem denominador, a recalibragem automática — o mecanismo que impede o app de culpar o paciente por meta mal calibrada — não rodava em nenhuma meta reduzida. E ao classificar os 42 comportamentos apareceu o segundo furo: seis deles são oportunistas, disparados por estado interno e não por relógio. Quem teve duas vontades fortes na semana e surfou as duas tem adesão de 100%, não de 2 em 7. Tratar como agendado acionaria redução de meta em cima de quem fez exatamente o combinado.
+
+**Consequência.** Os alvos padrão foram arbitrados por julgamento clínico, sem uso real, e entram como pendência da 1.5 para revisão com dado do piloto. O registro do comportamento oportunista passa a exigir as duas respostas, "aconteceu e eu fiz" e "aconteceu e eu não fiz", senão o denominador não existe.
+
+---
+
+## D-022 · O app é complemento do prontuário, não o prontuário
+**10/08/2026**
+
+**Contexto.** O modelo de dados podia crescer para virar registro clínico completo, com anamnese, evolução, antropometria e a guarda de prontuário exigida pelo conselho.
+
+**Decisão.** O app guarda só o que o protocolo produz. Anamnese, antropometria, evolução e histórico continuam onde estão hoje. Um profissional, sem coluna de profissional e sem isolamento por linha.
+
+**Por quê.** Virar prontuário multiplicaria o escopo da fase 2 e traria exigência de guarda, assinatura e interoperabilidade — nada disso serve ao problema que o app resolve, que é o intervalo entre consultas. Multi-profissional, sem um segundo profissional existindo, é uma coluna e um backfill adiados por custo zero.
+
+**Consequência.** O relatório pré-consulta é leitura de apoio, não documento clínico. Se um dia o app precisar valer como prontuário, isto vira decisão nova que revoga esta.
+
+---
+
 ## Ganchos de publicação
 
 Decisões que rendem post por contarem uma reviravolta, e não só um resultado:
@@ -253,3 +305,4 @@ Decisões que rendem post por contarem uma reviravolta, e não só um resultado:
 | "Cortei o questionário de 42 para 19 perguntas e melhorei o rastreio" | D-011, D-013 |
 | "Somar as respostas dava um número plausível e errado" | D-015 |
 | "O validador que impede o documento clínico e o código de divergirem" | D-006 |
+| "Desenhar o banco encontrou um furo no protocolo que a leitura clínica não pegou" | D-021 |

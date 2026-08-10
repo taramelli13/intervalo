@@ -1,0 +1,826 @@
+{
+  "versao": "1.3.0",
+  "tecnicas": [
+    { "id": "instrucao", "rotulo": "Instrução sobre como executar" },
+    { "id": "demonstracao", "rotulo": "Demonstração do comportamento" },
+    { "id": "pratica_guiada", "rotulo": "Prática guiada na consulta" },
+    { "id": "controle_estimulo", "rotulo": "Controle de estímulo" },
+    { "id": "planejamento_contexto", "rotulo": "Planejamento de contexto" },
+    { "id": "apoio_social", "rotulo": "Apoio social" },
+    { "id": "clarificacao_valores", "rotulo": "Clarificação de valores" },
+    { "id": "feedback", "rotulo": "Feedback sobre o comportamento" },
+    { "id": "planejamento_enfrentamento", "rotulo": "Planejamento de enfrentamento" }
+  ],
+  "barreiras": [
+    {
+      "id": "capacidade",
+      "rotulo": "Capacidade",
+      "pergunta_discriminadora": "Se eu te pedisse pra fazer isso amanhã, você saberia exatamente como?",
+      "tecnicas": ["instrucao", "demonstracao", "pratica_guiada"]
+    },
+    {
+      "id": "oportunidade",
+      "rotulo": "Oportunidade",
+      "pergunta_discriminadora": "O que na sua rotina ou na sua casa atrapalha isso?",
+      "tecnicas": ["controle_estimulo", "planejamento_contexto", "apoio_social"]
+    },
+    {
+      "id": "motivacao",
+      "rotulo": "Motivação",
+      "pergunta_discriminadora": "Numa semana comum, isso entra nas suas três prioridades?",
+      "tecnicas": ["clarificacao_valores", "feedback", "planejamento_enfrentamento"]
+    }
+  ],
+  "padroes": [
+    {
+      "id": "regulado",
+      "rotulo": "Comer regulado",
+      "origem": "tfeq14",
+      "faixa": { "min": null, "max": 45 },
+      "leitura": "A dificuldade não é emocional nem de descontrole. Vai direto ao COM-B: rotina, ambiente, organização."
+    },
+    {
+      "id": "emocional",
+      "rotulo": "Comer emocional",
+      "origem": "tfeq14",
+      "faixa": { "min": 45, "max": 70 },
+      "leitura": "Tendência a comer em situações emocionalmente desafiadoras."
+    },
+    {
+      "id": "exagerado",
+      "rotulo": "Comer exagerado",
+      "origem": "tfeq14",
+      "faixa": { "min": 70, "max": null },
+      "leitura": "Além de afetado pelas emoções, sente fome com mais intensidade e frequência. Aciona a ECAP."
+    },
+    {
+      "id": "restricao_rigida",
+      "rotulo": "Restrição rígida",
+      "origem": "julgamento_clinico",
+      "faixa": null,
+      "leitura": "Mentalidade de dieta com regra rígida. Não é escore — é registro do profissional. Trabalho é flexibilizar regra e trocar exclusão por inclusão."
+    }
+  ],
+  "categorias": [
+    { "id": "ritmo", "rotulo": "Ritmo", "padroes": ["regulado"] },
+    { "id": "ambiente", "rotulo": "Ambiente", "padroes": ["exagerado", "regulado"] },
+    { "id": "composicao", "rotulo": "Composição", "padroes": ["regulado", "restricao_rigida"] },
+    { "id": "estrutura_porcao", "rotulo": "Estrutura e porção", "padroes": ["exagerado", "regulado"] },
+    { "id": "contexto", "rotulo": "Contexto", "padroes": ["exagerado", "regulado"] },
+    { "id": "regulacao_emocional", "rotulo": "Regulação emocional", "padroes": ["emocional", "restricao_rigida"] },
+    { "id": "sono_energia", "rotulo": "Sono e energia", "padroes": ["emocional"] },
+    { "id": "movimento", "rotulo": "Movimento", "padroes": ["regulado"] },
+    { "id": "consciencia", "rotulo": "Consciência", "padroes": ["emocional", "restricao_rigida"] }
+  ],
+  "comportamentos": [
+    {
+      "id": "talher_pousado",
+      "rotulo": "Pousar o talher entre as garfadas",
+      "categoria": "ritmo",
+      "barreira": "capacidade",
+      "gatilho_sugerido": "Quando eu sentar para almoçar",
+      "versao_reduzida": "Pousar o talher nas cinco primeiras garfadas do almoço",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "refeicao_20min",
+      "rotulo": "Levar pelo menos 20 minutos na refeição principal",
+      "categoria": "ritmo",
+      "barreira": "capacidade",
+      "gatilho_sugerido": "Quando eu me sentar para a refeição principal do dia",
+      "versao_reduzida": "Levar pelo menos 15 minutos na refeição principal",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "mastigar_mais",
+      "rotulo": "Mastigar até a comida ficar bem desfeita antes de engolir",
+      "categoria": "ritmo",
+      "barreira": "capacidade",
+      "gatilho_sugerido": "Quando eu der a primeira garfada",
+      "versao_reduzida": "Mastigar até desfazer em uma refeição por dia",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "cafe_manha",
+      "rotulo": "Tomar café da manhã",
+      "categoria": "ritmo",
+      "barreira": "oportunidade",
+      "gatilho_sugerido": "Quando eu terminar de me arrumar de manhã",
+      "versao_reduzida": "Tomar café da manhã três dias na semana",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "lanche_tarde",
+      "rotulo": "Fazer um lanche à tarde antes de chegar em casa",
+      "categoria": "ritmo",
+      "barreira": "oportunidade",
+      "gatilho_sugerido": "Quando der o meio da tarde no trabalho",
+      "versao_reduzida": "Fazer o lanche da tarde três dias na semana",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "fruta_visivel",
+      "rotulo": "Deixar a fruta lavada e visível na bancada",
+      "categoria": "ambiente",
+      "barreira": "oportunidade",
+      "gatilho_sugerido": "Quando eu guardar as compras",
+      "versao_reduzida": "Deixar a fruta visível uma vez por semana, no dia da compra",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "bancada_limpa",
+      "rotulo": "Tirar da bancada o que eu como sem perceber",
+      "categoria": "ambiente",
+      "barreira": "oportunidade",
+      "gatilho_sugerido": "Quando eu terminar de arrumar a cozinha à noite",
+      "versao_reduzida": "Tirar da bancada um único item, o que mais me pega",
+      "requer_numeros": false,
+      "bloqueado_por": ["restricao_rigida"],
+      "contraindicacao": "Evitar se o paciente relata restrição severa ou medo de ter comida em casa"
+    },
+    {
+      "id": "lista_compras",
+      "rotulo": "Ir ao mercado com lista e depois de ter comido",
+      "categoria": "ambiente",
+      "barreira": "oportunidade",
+      "gatilho_sugerido": "Quando eu for ao mercado",
+      "versao_reduzida": "Ir ao mercado com lista, mesmo sem controlar o horário",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "servir_e_guardar",
+      "rotulo": "Servir no prato e guardar a panela antes de sentar",
+      "categoria": "ambiente",
+      "barreira": "oportunidade",
+      "gatilho_sugerido": "Quando eu montar o prato do jantar",
+      "versao_reduzida": "Servir no prato e deixar a panela fora do alcance da mesa",
+      "requer_numeros": false,
+      "bloqueado_por": ["restricao_rigida"],
+      "contraindicacao": "Evitar quando houver histórico de restrição ou preocupação com quantidade"
+    },
+    {
+      "id": "opcao_pronta",
+      "rotulo": "Deixar uma opção pronta na geladeira para o dia difícil",
+      "categoria": "ambiente",
+      "barreira": "oportunidade",
+      "gatilho_sugerido": "Quando eu cozinhar no fim de semana",
+      "versao_reduzida": "Deixar uma opção pronta a cada duas semanas",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "motivo_visivel",
+      "rotulo": "Deixar à vista o motivo que me fez começar",
+      "categoria": "ambiente",
+      "barreira": "motivacao",
+      "gatilho_sugerido": "Quando eu abrir a geladeira",
+      "versao_reduzida": "Escrever o motivo uma vez e guardar no celular",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": "Evitar motivo ligado a peso ou aparência"
+    },
+    {
+      "id": "vegetal_almoco",
+      "rotulo": "Incluir um vegetal no almoço",
+      "categoria": "composicao",
+      "barreira": "oportunidade",
+      "gatilho_sugerido": "Quando eu montar o prato do almoço",
+      "versao_reduzida": "Incluir um vegetal no almoço três dias na semana",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "vegetal_jantar",
+      "rotulo": "Incluir um vegetal no jantar",
+      "categoria": "composicao",
+      "barreira": "oportunidade",
+      "gatilho_sugerido": "Quando eu montar o prato do jantar",
+      "versao_reduzida": "Incluir um vegetal no jantar três dias na semana",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "proteina_cafe",
+      "rotulo": "Incluir uma fonte de proteína no café da manhã",
+      "categoria": "composicao",
+      "barreira": "capacidade",
+      "gatilho_sugerido": "Quando eu preparar o café da manhã",
+      "versao_reduzida": "Incluir proteína no café da manhã três dias na semana",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "fruta_lanche",
+      "rotulo": "Incluir uma fruta no lanche da tarde",
+      "categoria": "composicao",
+      "barreira": "oportunidade",
+      "gatilho_sugerido": "Quando eu fizer o lanche da tarde",
+      "versao_reduzida": "Incluir fruta no lanche três dias na semana",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "agua_dia",
+      "rotulo": "Beber água ao longo do dia",
+      "categoria": "composicao",
+      "barreira": "oportunidade",
+      "gatilho_sugerido": "Quando eu sentar na mesa de trabalho de manhã",
+      "versao_reduzida": "Deixar a garrafa cheia na mesa, sem meta de quantidade",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "prato_ordem",
+      "rotulo": "Montar o prato começando por vegetal e proteína",
+      "categoria": "estrutura_porcao",
+      "barreira": "capacidade",
+      "gatilho_sugerido": "Quando eu pegar o prato para me servir",
+      "versao_reduzida": "Montar o prato nessa ordem no almoço",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "servir_uma_vez",
+      "rotulo": "Servir uma vez só e não repetir sem esperar",
+      "categoria": "estrutura_porcao",
+      "barreira": "capacidade",
+      "gatilho_sugerido": "Quando eu terminar o que está no prato",
+      "versao_reduzida": "Esperar antes de repetir, sem se comprometer a não repetir",
+      "requer_numeros": false,
+      "bloqueado_por": ["restricao_rigida"],
+      "contraindicacao": "Evitar com restrição rígida — vira mais uma regra de proibição"
+    },
+    {
+      "id": "comer_nas_refeicoes",
+      "rotulo": "Comer nas refeições, sentado, e não ao longo do dia",
+      "categoria": "estrutura_porcao",
+      "barreira": "oportunidade",
+      "gatilho_sugerido": "Quando bater vontade de beliscar fora do horário",
+      "versao_reduzida": "Concentrar o que eu como fora de hora em um único momento do dia",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "horarios_parecidos",
+      "rotulo": "Manter horários parecidos de refeição nos dias de semana",
+      "categoria": "estrutura_porcao",
+      "barreira": "oportunidade",
+      "gatilho_sugerido": "Quando eu programar o dia de manhã",
+      "versao_reduzida": "Manter horário parecido em uma refeição do dia",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "sem_intervalo_longo",
+      "rotulo": "Não deixar passar mais de um intervalo longo sem comer",
+      "categoria": "estrutura_porcao",
+      "barreira": "capacidade",
+      "gatilho_sugerido": "Quando eu perceber que já faz tempo desde a última refeição",
+      "versao_reduzida": "Evitar o intervalo longo apenas nos dias de trabalho",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "sentar_para_comer",
+      "rotulo": "Comer sentado à mesa, não em pé nem andando",
+      "categoria": "contexto",
+      "barreira": "oportunidade",
+      "gatilho_sugerido": "Quando eu for comer qualquer coisa",
+      "versao_reduzida": "Comer sentado à mesa na refeição principal",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "refeicao_sem_tela",
+      "rotulo": "Fazer pelo menos uma refeição por dia sem tela",
+      "categoria": "contexto",
+      "barreira": "oportunidade",
+      "gatilho_sugerido": "Quando eu sentar para o jantar",
+      "versao_reduzida": "Fazer uma refeição sem tela três dias na semana",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "levar_marmita",
+      "rotulo": "Levar marmita para o trabalho",
+      "categoria": "contexto",
+      "barreira": "oportunidade",
+      "gatilho_sugerido": "Quando eu terminar de jantar na véspera",
+      "versao_reduzida": "Levar marmita dois dias na semana",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "avisar_alguem",
+      "rotulo": "Contar para uma pessoa da casa o que estou tentando mudar",
+      "categoria": "contexto",
+      "barreira": "oportunidade",
+      "gatilho_sugerido": "Quando eu chegar em casa hoje",
+      "versao_reduzida": "Contar para uma pessoa, sem pedir que ela participe",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "planejar_jantares",
+      "rotulo": "Escolher no domingo o que vai ser o jantar de três dias da semana",
+      "categoria": "contexto",
+      "barreira": "motivacao",
+      "gatilho_sugerido": "Quando eu sentar no sofá no domingo à noite",
+      "versao_reduzida": "Escolher o jantar de um dia da semana",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "revisao_semanal",
+      "rotulo": "Olhar no domingo como foi a semana e escolher a meta da próxima",
+      "categoria": "contexto",
+      "barreira": "motivacao",
+      "gatilho_sugerido": "Quando eu sentar no sofá no domingo à noite",
+      "versao_reduzida": "Olhar como foi a semana, sem precisar escolher meta nova",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "nomear_emocao",
+      "rotulo": "Nomear a emoção antes de decidir comer",
+      "categoria": "regulacao_emocional",
+      "barreira": "capacidade",
+      "gatilho_sugerido": "Quando eu for comer fora do horário das refeições",
+      "versao_reduzida": "Nomear a emoção depois de comer, se não der antes",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "usar_cardapio_regulacao",
+      "rotulo": "Usar uma alternativa do meu cardápio de regulação antes de ir à cozinha",
+      "categoria": "regulacao_emocional",
+      "barreira": "oportunidade",
+      "gatilho_sugerido": "Quando eu me pegar indo à cozinha sem fome",
+      "versao_reduzida": "Olhar o cardápio de regulação, mesmo que eu decida comer",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": "Exige o cardápio de regulação preenchido na consulta"
+    },
+    {
+      "id": "pausa_dia_estresse",
+      "rotulo": "Fazer uma pausa de dois minutos antes da refeição em dia de estresse",
+      "categoria": "regulacao_emocional",
+      "barreira": "capacidade",
+      "gatilho_sugerido": "Quando eu sentar para comer depois de um dia pesado",
+      "versao_reduzida": "Fazer a pausa em uma refeição por semana",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "agir_pelo_decidido",
+      "rotulo": "Agir pelo que eu decidi, não pelo que estou sentindo naquele minuto",
+      "categoria": "regulacao_emocional",
+      "barreira": "motivacao",
+      "gatilho_sugerido": "Quando o que eu sinto for diferente do que eu combinei",
+      "versao_reduzida": "Agir pelo que decidi em uma situação por semana",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "horario_deitar",
+      "rotulo": "Deitar até um horário combinado nos dias de semana",
+      "categoria": "sono_energia",
+      "barreira": "oportunidade",
+      "gatilho_sugerido": "Quando der o horário combinado à noite",
+      "versao_reduzida": "Deitar no horário combinado três dias na semana",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "tela_antes_dormir",
+      "rotulo": "Desligar tela um tempo antes de dormir",
+      "categoria": "sono_energia",
+      "barreira": "oportunidade",
+      "gatilho_sugerido": "Quando eu for para a cama",
+      "versao_reduzida": "Desligar a tela alguns minutos antes, sem tempo fixo",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "horario_acordar",
+      "rotulo": "Ter um horário fixo para acordar, inclusive fim de semana",
+      "categoria": "sono_energia",
+      "barreira": "capacidade",
+      "gatilho_sugerido": "Quando o despertador tocar",
+      "versao_reduzida": "Manter o horário fixo nos dias de semana",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "caminhar_horario_fixo",
+      "rotulo": "Caminhar em um horário fixo do dia",
+      "categoria": "movimento",
+      "barreira": "oportunidade",
+      "gatilho_sugerido": "Quando eu terminar o almoço",
+      "versao_reduzida": "Caminhar no horário fixo três dias na semana",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "atividade_que_gosto",
+      "rotulo": "Fazer uma atividade que eu gosto, no dia combinado",
+      "categoria": "movimento",
+      "barreira": "motivacao",
+      "gatilho_sugerido": "Quando chegar o dia que eu combinei",
+      "versao_reduzida": "Fazer a atividade a cada duas semanas",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": "Evitar enquadrar como compensação do que foi comido"
+    },
+    {
+      "id": "movimento_na_rotina",
+      "rotulo": "Subir escada / descer um ponto antes, na rotina que já existe",
+      "categoria": "movimento",
+      "barreira": "capacidade",
+      "gatilho_sugerido": "Quando eu chegar no elevador ou no ponto",
+      "versao_reduzida": "Fazer isso na ida, não na volta",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "fome_antes",
+      "rotulo": "Marcar o nível de fome antes da refeição",
+      "categoria": "consciencia",
+      "barreira": "capacidade",
+      "gatilho_sugerido": "Quando eu sentar para comer",
+      "versao_reduzida": "Marcar o nível de fome antes de uma refeição por dia",
+      "requer_numeros": true,
+      "bloqueado_por": [],
+      "contraindicacao": "Indisponível em modo sem números"
+    },
+    {
+      "id": "saciedade_depois",
+      "rotulo": "Marcar o nível de saciedade depois da refeição",
+      "categoria": "consciencia",
+      "barreira": "capacidade",
+      "gatilho_sugerido": "Quando eu largar o talher no fim da refeição",
+      "versao_reduzida": "Marcar a saciedade depois de uma refeição por dia",
+      "requer_numeros": true,
+      "bloqueado_por": [],
+      "contraindicacao": "Indisponível em modo sem números"
+    },
+    {
+      "id": "pausa_meio_prato",
+      "rotulo": "Parar no meio do prato e checar se ainda estou com fome",
+      "categoria": "consciencia",
+      "barreira": "capacidade",
+      "gatilho_sugerido": "Quando o prato estiver na metade",
+      "versao_reduzida": "Fazer a pausa do meio do prato em uma refeição por dia",
+      "requer_numeros": false,
+      "bloqueado_por": ["compulsao", "restricao_rigida"],
+      "contraindicacao": "Indisponível com flag de compulsão e com histórico de restrição"
+    },
+    {
+      "id": "pergunta_fora_horario",
+      "rotulo": "Antes de comer fora do horário, perguntar se é fome ou outra coisa",
+      "categoria": "consciencia",
+      "barreira": "motivacao",
+      "gatilho_sugerido": "Quando eu abrir a geladeira fora do horário das refeições",
+      "versao_reduzida": "Fazer a pergunta, mesmo que a resposta seja comer do mesmo jeito",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    },
+    {
+      "id": "surfar_desejo",
+      "rotulo": "Quando bater a vontade forte, observar por dois minutos antes de decidir",
+      "categoria": "consciencia",
+      "barreira": "capacidade",
+      "gatilho_sugerido": "Quando bater uma vontade forte de comer",
+      "versao_reduzida": "Observar a vontade por um minuto antes de decidir",
+      "requer_numeros": false,
+      "bloqueado_por": [],
+      "contraindicacao": null
+    }
+  ],
+  "situacoes_ancora": [
+    { "id": "fome_noite", "rotulo": "Chegar em casa faminto à noite" },
+    { "id": "ansiedade_noturna", "rotulo": "Ansiedade depois que a casa silencia" },
+    { "id": "fim_de_semana", "rotulo": "Churrasco ou almoço de família no fim de semana" },
+    { "id": "viagem_trabalho", "rotulo": "Viagem ou dia inteiro fora de casa" },
+    { "id": "refeicao_social", "rotulo": "Restaurante ou refeição com outras pessoas" },
+    { "id": "estresse_agudo", "rotulo": "Dia de estresse ou briga" },
+    { "id": "cansaco", "rotulo": "Cansaço extremo, sem energia para cozinhar" },
+    { "id": "tpm", "rotulo": "Período pré-menstrual" },
+    { "id": "tedio", "rotulo": "Tédio ou ócio em casa" },
+    { "id": "comemoracao", "rotulo": "Comemoração, aniversário, data especial" }
+  ],
+  "cardapio_regulacao": {
+    "minimo_opcoes_por_estado": 2,
+    "estados": [
+      { "id": "ansiedade", "rotulo": "Ansiedade", "pergunta": "Numa noite ansiosa em que você não comeu, o que você fez?" },
+      { "id": "tedio", "rotulo": "Tédio", "pergunta": "O que te tira do tédio sem sair de casa e sem custar nada?" },
+      { "id": "cansaco", "rotulo": "Cansaço", "pergunta": "Quando você está exausto, o que efetivamente descansa você?" },
+      { "id": "raiva", "rotulo": "Raiva / frustração", "pergunta": "Depois de uma briga, o que te acalma?" },
+      { "id": "tristeza", "rotulo": "Tristeza", "pergunta": "Quem ou o que você procura quando está pra baixo?" }
+    ]
+  },
+  "reguas": {
+    "confianca": { "min": 0, "max": 10, "limiar_reducao": 7 },
+    "importancia": { "min": 0, "max": 10 },
+    "fome_saciedade": { "min": 0, "max": 10 }
+  },
+  "regras_revisao": [
+    { "adesao_min": 0.8, "semanas": 2, "acao": "progredir" },
+    { "adesao_min": 0.5, "semanas": 2, "acao": "manter" },
+    { "adesao_min": 0.0, "semanas": 2, "acao": "reduzir" }
+  ],
+  "limite_comportamentos_simultaneos": 3,
+  "peso": {
+    "padrao": "oculto",
+    "liberavel_pelo_profissional": true,
+    "exige_justificativa": true,
+    "exibicao": "tendencia_por_semanas",
+    "bloqueado_em_modo_sem_numeros": true,
+    "usado_em_calculo": false
+  },
+  "modo_sem_numeros": {
+    "oculta": [
+      "regua_fome_saciedade",
+      "grafico_adesao",
+      "percentual_adesao",
+      "contagem_de_dias",
+      "peso",
+      "escore_tfeq14",
+      "comportamentos_requer_numeros"
+    ],
+    "mantem": [
+      "registro_feito_nao_feito",
+      "tela_de_contexto",
+      "plano_de_enfrentamento",
+      "cardapio_regulacao",
+      "urge_surfing"
+    ]
+  },
+  "instrumentos": {
+    "scoff": {
+      "papel": "porta_de_seguranca",
+      "quando": "consulta_1_paciente_novo",
+      "itens": [
+        "Você provoca vômito porque se sente desconfortavelmente cheio(a)?",
+        "Você se preocupa por ter perdido o controle sobre o quanto come?",
+        "Você perdeu mais de 6 kg em um período de três meses recentemente?",
+        "Você acredita estar gordo(a) mesmo quando os outros dizem que você está magro(a)?",
+        "Você diria que a comida domina sua vida?"
+      ],
+      "limiar_positivo": 2,
+      "acao": "modo_sem_numeros",
+      "reavaliacao_semanas": 12,
+      "desvio_deliberado": "O item 3 não pontua quando a perda de peso foi intencional e supervisionada. Isso torna o escore não comparável com a literatura do SCOFF."
+    },
+    "tfeq14": {
+      "papel": "caracterizacao",
+      "quando": "consulta_1_e_a_cada_12_semanas",
+      "constructo": "desregulação do comer",
+      "fonte": "Quiles (2024), USP — reanálise por TRI da versão brasileira do TFEQ-R21 (Natacci e Ferreira Jr., 2011)",
+      "metrica": { "media": 50, "desvio": 10, "modelo": "samejima_gru", "escore": "eap" },
+      "opcoes_padrao": [
+        "Totalmente falso",
+        "Falso, na maioria das vezes",
+        "Verdade, na maioria das vezes",
+        "Totalmente verdade"
+      ],
+      "cortes": [
+        { "acima_de": 70, "padrao": "exagerado" },
+        { "acima_de": 45, "padrao": "emocional" },
+        { "acima_de": null, "padrao": "regulado" }
+      ],
+      "itens": [
+        { "n": 1, "item_original": 2, "texto": "Eu começo a comer quando me sinto ansioso.", "a": 0.28, "b": [39.54, 48.6, 58.36] },
+        { "n": 2, "item_original": 3, "texto": "Às vezes, quando começo a comer, parece-me que não conseguirei parar.", "a": 0.19, "b": [43.67, 59.28, 71.41] },
+        { "n": 3, "item_original": 4, "texto": "Quando me sinto triste, frequentemente como demais.", "a": 0.32, "b": [45.17, 54.96, 63.15] },
+        { "n": 4, "item_original": 6, "texto": "Estar com alguém que está comendo, me dá frequentemente vontade de comer também.", "a": 0.1, "b": [26.87, 49.59, 69.66] },
+        { "n": 5, "item_original": 7, "texto": "Quando me sinto tenso ou estressado, frequentemente sinto que preciso comer.", "a": 0.36, "b": [41.99, 51.36, 60.86] },
+        { "n": 6, "item_original": 8, "texto": "Frequentemente sinto tanta fome que meu estômago parece um poço sem fundo.", "a": 0.11, "b": [44.39, 68.08, 86.98] },
+        { "n": 7, "item_original": 9, "texto": "Eu sempre estou com tanta fome, que me é difícil parar de comer antes de terminar toda a comida que está no prato.", "a": 0.15, "b": [46.89, 66.55, 78.1] },
+        { "n": 8, "item_original": 10, "texto": "Quando me sinto solitário(a), me consolo comendo.", "a": 0.3, "b": [45.44, 56.09, 65.95] },
+        { "n": 9, "item_original": 13, "texto": "Estou sempre com fome o bastante para comer a qualquer hora.", "a": 0.13, "b": [45.53, 64.08, 82.74] },
+        { "n": 10, "item_original": 14, "texto": "Se eu me sinto nervoso(a), tento me acalmar comendo.", "a": 0.43, "b": [45.89, 56.52, 66.45] },
+        { "n": 11, "item_original": 15, "texto": "Quando vejo algo que me parece muito delicioso, eu frequentemente fico com tanta fome que tenho que comer imediatamente.", "a": 0.14, "b": [41.76, 59.27, 77.59] },
+        { "n": 12, "item_original": 16, "texto": "Quando me sinto depressivo(a), eu quero comer.", "a": 0.46, "b": [47.42, 55.61, 63.61] },
+        {
+          "n": 13, "item_original": 19,
+          "texto": "Você comete excessos alimentares, mesmo quando não está com fome?",
+          "opcoes": ["Nunca", "Raramente", "Às vezes", "Pelo menos 1 vez por semana"],
+          "a": 0.18, "b": [31.61, 45.95, 62.36]
+        },
+        {
+          "n": 14, "item_original": 20,
+          "texto": "Com qual frequência você fica com fome?",
+          "opcoes": ["Somente nos horários das refeições", "Às vezes entre as refeições", "Frequentemente entre as refeições", "Quase sempre"],
+          "a": 0.1, "b": [37.61, 64.37, 81.85]
+        }
+      ]
+    },
+    "ecap": {
+      "papel": "rastreio_compulsao",
+      "quando": "condicional",
+      "gatilho": { "instrumento": "tfeq14", "acima_de": 70 },
+      "fonte": "Freitas S, Lopes CS, Coutinho W, Appolinario JC. Tradução e adaptação para o português da Escala de Compulsão Alimentar Periódica. Rev Bras Psiquiatr 2001;23(4):215-20. Original: Gormally et al. (1982), Binge Eating Scale.",
+      "escore": "soma_simples",
+      "faixas": [
+        { "acima_de": 26, "rotulo": "compulsão grave" },
+        { "acima_de": 17, "rotulo": "compulsão moderada" },
+        { "acima_de": null, "rotulo": "sem compulsão" }
+      ],
+      "itens": [
+        { "n": 1, "alternativas": [
+          { "texto": "Eu não me sinto constrangido(a) com o meu peso ou o tamanho do meu corpo quando estou com outras pessoas.", "pontos": 0 },
+          { "texto": "Eu me sinto preocupado(a) em como pareço para os outros, mas isto, normalmente, não me faz sentir desapontado(a) comigo mesmo(a).", "pontos": 0 },
+          { "texto": "Eu fico mesmo constrangido(a) com a minha aparência e o meu peso, o que me faz sentir desapontado(a) comigo mesmo(a).", "pontos": 1 },
+          { "texto": "Eu me sinto muito constrangido(a) com o meu peso e, frequentemente, sinto muita vergonha e desprezo por mim mesmo(a). Tento evitar contatos sociais por causa desse constrangimento.", "pontos": 3 }
+        ]},
+        { "n": 2, "alternativas": [
+          { "texto": "Eu não tenho nenhuma dificuldade para comer devagar, de maneira apropriada.", "pontos": 0 },
+          { "texto": "Embora pareça que eu devore os alimentos, não acabo me sentindo empanturrado(a) por comer demais.", "pontos": 1 },
+          { "texto": "Às vezes tendo a comer rapidamente, sentindo-me então desconfortavelmente cheio(a) depois.", "pontos": 2 },
+          { "texto": "Eu tenho o hábito de engolir minha comida sem realmente mastigá-la. Quando isto acontece, em geral me sinto desconfortavelmente empanturrado(a) por ter comido demais.", "pontos": 3 }
+        ]},
+        { "n": 3, "alternativas": [
+          { "texto": "Eu me sinto capaz de controlar meus impulsos para comer, quando eu quero.", "pontos": 0 },
+          { "texto": "Eu sinto que tenho falhado em controlar meu comportamento alimentar mais do que a média das pessoas.", "pontos": 1 },
+          { "texto": "Eu me sinto totalmente incapaz de controlar meus impulsos para comer.", "pontos": 3 },
+          { "texto": "Por me sentir tão incapaz de controlar meu comportamento alimentar, entro em desespero tentando manter o controle.", "pontos": 3 }
+        ]},
+        { "n": 4, "alternativas": [
+          { "texto": "Eu não tenho o hábito de comer quando estou chateado(a).", "pontos": 0 },
+          { "texto": "Às vezes eu como quando estou chateado(a) mas, frequentemente, sou capaz de me ocupar e afastar minha mente da comida.", "pontos": 0 },
+          { "texto": "Eu tenho o hábito regular de comer quando estou chateado(a) mas, de vez em quando, posso usar alguma outra atividade para afastar minha mente da comida.", "pontos": 0 },
+          { "texto": "Eu tenho o forte hábito de comer quando estou chateado(a). Nada parece me ajudar a parar com esse hábito.", "pontos": 2 }
+        ]},
+        { "n": 5, "alternativas": [
+          { "texto": "Normalmente quando como alguma coisa é porque estou fisicamente com fome.", "pontos": 0 },
+          { "texto": "De vez em quando como alguma coisa por impulso, mesmo quando não estou realmente com fome.", "pontos": 1 },
+          { "texto": "Eu tenho o hábito regular de comer alimentos que realmente não aprecio para satisfazer uma sensação de fome, mesmo que fisicamente eu não necessite de comida.", "pontos": 2 },
+          { "texto": "Mesmo que não esteja fisicamente com fome, tenho uma sensação de fome em minha boca que somente parece ser satisfeita quando eu como um alimento, tipo um sanduíche, que enche a minha boca. Às vezes, quando eu como o alimento para satisfazer minha “fome na boca”, em seguida eu o cuspo, assim não ganharei peso.", "pontos": 3 }
+        ]},
+        { "n": 6, "alternativas": [
+          { "texto": "Eu não sinto qualquer culpa ou ódio de mim mesmo(a) depois de comer demais.", "pontos": 0 },
+          { "texto": "De vez em quando sinto culpa ou ódio de mim mesmo(a) depois de comer demais.", "pontos": 1 },
+          { "texto": "Quase o tempo todo sinto muita culpa ou ódio de mim mesmo(a) depois de comer demais.", "pontos": 3 }
+        ]},
+        { "n": 7, "alternativas": [
+          { "texto": "Eu não perco o controle total da minha alimentação quando estou em dieta, mesmo após períodos em que como demais.", "pontos": 0 },
+          { "texto": "Às vezes, quando estou em dieta e como um alimento proibido, sinto como se tivesse estragado tudo e como ainda mais.", "pontos": 2 },
+          { "texto": "Frequentemente, quando como demais durante uma dieta, tenho o hábito de dizer para mim mesmo(a): “agora que estraguei tudo, porque não irei até o fim”. Quando isto acontece, eu como ainda mais.", "pontos": 3 },
+          { "texto": "Eu tenho o hábito regular de começar dietas rigorosas por mim mesmo(a), mas quebro as dietas entrando numa compulsão alimentar. Minha vida parece ser “uma festa” ou “um morrer de fome”.", "pontos": 3 }
+        ]},
+        { "n": 8, "alternativas": [
+          { "texto": "Eu raramente como tanta comida a ponto de me sentir desconfortavelmente empanturrado(a) depois.", "pontos": 0 },
+          { "texto": "Normalmente, cerca de uma vez por mês, como uma tal quantidade de comida que acabo me sentindo muito empanturrado(a).", "pontos": 1 },
+          { "texto": "Eu tenho períodos regulares durante o mês, quando como grandes quantidades de comida, seja na hora das refeições, seja nos lanches.", "pontos": 2 },
+          { "texto": "Eu como tanta comida que, regularmente, me sinto bastante desconfortável depois de comer e, algumas vezes, um pouco enjoado(a).", "pontos": 3 }
+        ]},
+        { "n": 9, "alternativas": [
+          { "texto": "Em geral, minha ingesta calórica não sobe a níveis muito altos, nem desce a níveis muito baixos.", "pontos": 0 },
+          { "texto": "Às vezes, depois de comer demais, tento reduzir minha ingesta calórica para quase nada, para compensar o excesso de calorias que ingeri.", "pontos": 1 },
+          { "texto": "Eu tenho o hábito regular de comer demais durante a noite. Parece que a minha rotina não é estar com fome de manhã, mas comer demais à noite.", "pontos": 2 },
+          { "texto": "Na minha vida adulta tenho tido períodos, que duram semanas, nos quais praticamente me mato de fome. Isto se segue a períodos em que como demais. Parece que vivo uma vida de “festa” ou de “morrer de fome”.", "pontos": 3 }
+        ]},
+        { "n": 10, "alternativas": [
+          { "texto": "Normalmente eu sou capaz de parar de comer quando quero. Eu sei quando “já chega”.", "pontos": 0 },
+          { "texto": "De vez em quando, eu tenho uma compulsão para comer que parece que não posso controlar.", "pontos": 1 },
+          { "texto": "Frequentemente tenho fortes impulsos para comer que parece que não sou capaz de controlar, mas, em outras ocasiões, posso controlar meus impulsos para comer.", "pontos": 2 },
+          { "texto": "Eu me sinto incapaz de controlar impulsos para comer. Eu tenho medo de não ser capaz de parar de comer por vontade própria.", "pontos": 3 }
+        ]},
+        { "n": 11, "alternativas": [
+          { "texto": "Eu não tenho problema algum para parar de comer quando me sinto cheio(a).", "pontos": 0 },
+          { "texto": "Eu, normalmente, posso parar de comer quando me sinto cheio(a) mas, de vez em quando, comer demais me deixa desconfortavelmente empanturrado(a).", "pontos": 1 },
+          { "texto": "Eu tenho um problema para parar de comer uma vez que eu tenha começado e, normalmente, sinto-me desconfortavelmente empanturrado(a) depois que faço uma refeição.", "pontos": 2 },
+          { "texto": "Por eu ter o problema de não ser capaz de parar de comer quando quero, às vezes tenho que provocar o vômito, usar laxativos e/ou diuréticos para aliviar minha sensação de empanturramento.", "pontos": 3 }
+        ]},
+        { "n": 12, "alternativas": [
+          { "texto": "Parece que eu como tanto quando estou com os outros (reuniões familiares, sociais), como quando estou sozinho(a).", "pontos": 0 },
+          { "texto": "Às vezes, quando eu estou com outras pessoas, não como tanto quanto eu quero comer porque me sinto constrangido(a) com o meu comportamento alimentar.", "pontos": 1 },
+          { "texto": "Frequentemente eu como só uma pequena quantidade de comida quando outros estão presentes, pois me sinto muito embaraçado(a) com o meu comportamento alimentar.", "pontos": 2 },
+          { "texto": "Eu me sinto tão envergonhado(a) por comer demais que escolho horas para comer demais quando sei que ninguém me verá. Eu me sinto como uma pessoa que se esconde para comer.", "pontos": 3 }
+        ]},
+        { "n": 13, "alternativas": [
+          { "texto": "Eu faço três refeições ao dia com apenas um lanche ocasional entre as refeições.", "pontos": 0 },
+          { "texto": "Eu faço três refeições ao dia mas, normalmente, também lancho entre as refeições.", "pontos": 0 },
+          { "texto": "Quando eu faço lanches pesados, tenho o hábito de pular as refeições regulares.", "pontos": 2 },
+          { "texto": "Há períodos regulares em que parece que eu estou continuamente comendo, sem refeições planejadas.", "pontos": 3 }
+        ]},
+        { "n": 14, "alternativas": [
+          { "texto": "Eu não penso muito em tentar controlar impulsos indesejáveis para comer.", "pontos": 0 },
+          { "texto": "Pelo menos, em algum momento, sinto que meus pensamentos estão “pré-ocupados” com tentar controlar meus impulsos para comer.", "pontos": 1 },
+          { "texto": "Frequentemente, sinto que gasto muito tempo pensando no quanto comi ou tentando não comer mais.", "pontos": 2 },
+          { "texto": "Parece, para mim, que a maior parte das horas que passo acordado(a) estão “pré-ocupadas” por pensamentos sobre comer ou não comer. Sinto como se eu estivesse constantemente lutando para não comer.", "pontos": 3 }
+        ]},
+        { "n": 15, "alternativas": [
+          { "texto": "Eu não penso muito sobre comida.", "pontos": 0 },
+          { "texto": "Eu tenho fortes desejos por comida, mas eles só duram curtos períodos de tempo.", "pontos": 1 },
+          { "texto": "Há dias em que parece que eu não posso pensar em mais nada a não ser comida.", "pontos": 2 },
+          { "texto": "Na maioria dos dias, meus pensamentos parecem estar “pré-ocupados” com comida. Sinto como se eu vivesse para comer.", "pontos": 3 }
+        ]},
+        { "n": 16, "alternativas": [
+          { "texto": "Eu normalmente sei se estou ou não fisicamente com fome. Eu como a porção certa de comida para me satisfazer.", "pontos": 0 },
+          { "texto": "De vez em quando eu me sinto em dúvida para saber se estou ou não fisicamente com fome. Nessas ocasiões é difícil saber quanto eu deveria comer para me satisfazer.", "pontos": 1 },
+          { "texto": "Mesmo que se eu pudesse saber quantas calorias eu deveria ingerir, não teria ideia alguma de qual seria a quantidade “normal” de comida para mim.", "pontos": 2 }
+        ]}
+      ]
+    },
+    "deas_s": {
+      "papel": "desfecho",
+      "quando": "baseline_e_a_cada_12_semanas",
+      "aplicacao": "autoaplicado_no_app_entre_consulta_1_e_2",
+      "constructo": "atitudes alimentares disfuncionais — relação com a comida",
+      "fonte": "DEAS-s, forma curta do Disordered Eating Attitude Scale, validação brasileira por TRI (Cad. Saúde Pública, 2020)",
+      "metrica": { "media": 0, "desvio": 1, "modelo": "samejima_gru", "escore": "eap" },
+      "corte": { "acima_ou_igual": 1.5, "rotulo": "atitudes alimentares disfuncionais importantes" },
+      "escala_de_exibicao": {
+        "nota": "Ancoragem publicada (Box 1). Não é 50+10θ exato — usar estes pares, não recalcular.",
+        "pares": [[-0.5, 44.6], [0.0, 49.9], [0.5, 55.3], [1.0, 60.7], [1.5, 66.1], [2.0, 71.4], [2.5, 76.8]]
+      },
+      "traducao_pendente": "Os enunciados abaixo são os publicados em inglês (Cad. Saúde Pública, versão en_US). A redação validada em português está no DEAS original (Alvarenga, Scagliusi e Philippi, 2010) e deve substituir estes textos antes do uso com paciente.",
+      "itens": [
+        { "n": 1, "item_original": 3, "texto_en": "Does eating ever feel unnatural to you?", "opcoes_en": ["No", "Yes"], "a": 2.01, "b": [2.43] },
+        { "n": 2, "item_original": 4, "texto_en": "Have you ever spent one or more days without eating or having only liquids because you believed you could lose weight?", "opcoes_en": ["No", "Yes"], "a": 1.47, "b": [1.71] },
+        { "n": 3, "item_original": 5, "texto_en": "Do you count the calories of everything you eat?", "opcoes_en": ["No", "Yes"], "a": 1.51, "b": [1.94] },
+        { "n": 4, "item_original": 7, "texto_en": "Do you “skip” meals to avoid putting on weight?", "opcoes_en": ["No", "Yes"], "a": 1.71, "b": [0.99] },
+        { "n": 5, "item_original": 8, "texto_en": "Does eating make you feel “dirty”?", "opcoes_en": ["No", "Yes"], "a": 2.52, "b": [1.92] },
+        { "n": 6, "item_original": 10, "texto_en": "Would you like to not need to eat?", "opcoes_en": ["No", "Yes"], "a": 1.54, "b": [1.25] },
+        { "n": 7, "item_original": 12, "texto_en": "When you eat more than usual, what is your behavior afterwards?", "opcoes_en": ["Restart eating as usual", "Assume you have lost control and keep eating even more / Decide to go on a diet to compensate", "Use some kind of compensation, such as physical activity, vomiting, laxatives and diuretics"], "a": 1.69, "b": [0.5, 1.81] },
+        { "n": 8, "item_original": 13, "texto_en": "I feel guilty when I eat something that I thought I should not eat for some reason.", "opcoes_en": ["Never", "Sometimes", "Frequently", "Always"], "a": 2.24, "b": [-0.49, 0.7, 1.45] },
+        { "n": 9, "item_original": 14, "texto_en": "I quit eating a kind of food if I find out it has more calories than I thought.", "opcoes_en": ["Never", "Sometimes", "Frequently", "Always"], "a": 1.48, "b": [0.32, 1.642, 2.63] },
+        { "n": 10, "item_original": 16, "texto_en": "I worry about how much a certain kind of food or meal will make me gain weight.", "opcoes_en": ["Never", "Sometimes", "Frequently", "Always"], "a": 1.99, "b": [-0.47, 0.56, 1.49] },
+        { "n": 11, "item_original": 17, "texto_en": "I am angry when I feel hungry.", "opcoes_en": ["Rarely", "Frequently"], "a": 1.62, "b": [1.28] },
+        { "n": 12, "item_original": 18, "texto_en": "It is hard to choose what to eat, because I always think I should eat less or choose the option with fewer calories.", "opcoes_en": ["Never", "Sometimes", "Frequently", "Always"], "a": 2.39, "b": [0.08, 0.91, 1.66] },
+        { "n": 13, "item_original": 21, "texto_en": "I try eating less in front of others in order to overeat when I am alone.", "opcoes_en": ["Rarely", "Frequently"], "a": 1.59, "b": [2.2] },
+        { "n": 14, "item_original": 22, "texto_en": "I am afraid to start eating and not be able to stop.", "opcoes_en": ["Never", "Sometimes", "Frequently", "Always"], "a": 1.94, "b": [0.67, 1.39, 2.06] },
+        { "n": 15, "item_original": 23, "texto_en": "I dream of a pill that would replace food.", "opcoes_en": ["Rarely", "Frequently"], "a": 2.19, "b": [1.35] },
+        { "n": 16, "item_original": 24, "texto_en": "I get nervous and/or lose my self-control at parties and buffets, due to a great amount of foods available.", "opcoes_en": ["Rarely", "Frequently"], "a": 1.82, "b": [1.9] },
+        { "n": 17, "item_original": 25, "texto_en": "My relationship with food messes up my life as a whole.", "opcoes_en": ["Rarely", "Frequently"], "a": 2.65, "b": [1.52] }
+      ]
+    },
+    "srbai": {
+      "papel": "automaticidade",
+      "quando": "a_cada_4_semanas",
+      "enunciado": "O comportamento que combinamos é algo que...",
+      "itens": [
+        "faço automaticamente",
+        "faço sem ter que lembrar conscientemente",
+        "faço sem pensar a respeito",
+        "começo a fazer antes de perceber que estou fazendo"
+      ],
+      "escala": { "min": 1, "max": 7 }
+    }
+  },
+  "restricao_rigida": {
+    "origem": "julgamento_clinico",
+    "pontuado": false,
+    "valores": ["sim", "nao", "nao_avaliada"],
+    "perguntas_de_conversa": [
+      "Eu deliberadamente consumo pequenas porções para controlar meu peso.",
+      "Eu não como alguns alimentos porque eles me engordam.",
+      "Eu conscientemente me controlo nas refeições para evitar ganhar peso.",
+      "O quanto frequentemente você evita “estocar” comidas tentadoras?",
+      "O quanto você estaria disposto(a) a fazer um esforço para comer menos do que deseja?",
+      "Numa escala de 1 a 8, quanta restrição alimentar você atribuiria a si mesmo?"
+    ],
+    "nota": "São os seis itens de restrição cognitiva do TFEQ-R21 que não sustentaram escala válida em português. Servem como conversa, nunca como escore."
+  }
+}

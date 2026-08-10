@@ -15,6 +15,8 @@ Estado: protocolo clínico fechado na versão 1.3.0, e nenhuma linha de app escr
 | Escores dos três instrumentos | `protocolo/escores.py` |
 | Validador que trava divergência entre documento e seed | `protocolo/validate_seed.py` |
 | Registro de decisões | `DECISOES.md` |
+| Roteiro operável da consulta 1 | `protocolo/roteiro-consulta-1.md` |
+| Aplicador dos instrumentos na mesa | `protocolo/consulta.py` |
 
 Conteúdo: triagem em quatro etapas, diagnóstico COM-B, 42 comportamentos-alvo em 9 categorias com filtro duplo, metas no formato quando/então com régua de confiança, plano de enfrentamento com cardápio de regulação, módulo de comer consciente, resolução estruturada de problemas, protocolo do lapso, fase de manutenção, relatório pré-consulta e política de dados.
 
@@ -49,6 +51,7 @@ Pendências que bloqueiam uso com paciente:
 
 ## Fase 3, piloto clínico
 
+- [ ] Cronometrar os blocos 1 a 4 da consulta 1 na primeira aplicação real, verificação que ficou pendente da fase 0 ([D-018](DECISOES.md))
 - [ ] Primeiros pacientes, cada ciclo gravado sob a versão do protocolo que rodou
 - [ ] Métricas dos 30 dias: adesão por comportamento, taxa de registro, automaticidade, recalibragens acionadas, distribuição do TFEQ-14, taxa de acionamento da ECAP, adesão ao DEAS-s
 - [ ] Calibrar o corte de 45 do TFEQ com dado próprio, porque a suspeita é que ele não separe nada neste público

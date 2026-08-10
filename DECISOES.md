@@ -227,6 +227,19 @@ Convenção: entrada nova vai no fim, nunca se reescreve entrada antiga. Se uma 
 
 ---
 
+## D-018 · Não iniciar o piloto antes do app estar pronto
+**10/08/2026**
+
+**Contexto.** Havia um paciente candidato a piloto, e o roteiro da consulta 1 mais o aplicador dos instrumentos estavam prontos. A alternativa oferecida era dar um veículo provisório de registro para o intervalo entre consultas, uma linha por dia no WhatsApp ou um cartão de papel.
+
+**Decisão.** Não começar. O piloto começa quando o app estiver pronto.
+
+**Por quê.** Decisão do responsável clínico, coerente com D-004.
+
+**Consequência.** O protocolo continua sem nenhuma validação de uso, e isso é o risco assumido em D-004 se materializando: a primeira vez que o roteiro rodar será com paciente real e app pronto. `roteiro-consulta-1.md` e `consulta.py` ficam prontos e parados. A verificação pendente da fase 0, cronometrar os blocos 1 a 4, passa a ser a primeira tarefa da fase 3.
+
+---
+
 ## Ganchos de publicação
 
 Decisões que rendem post por contarem uma reviravolta, e não só um resultado:

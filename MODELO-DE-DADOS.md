@@ -73,6 +73,7 @@ Guardar as respostas item a item, e não só o escore, é o que permite recalcul
 | Campo | Observação |
 |---|---|
 | `paciente`, `prescricao` | Prescrição nula em evento que não pertence a um comportamento |
+| `id` | Gerado no dispositivo, não no servidor — a fila local grava antes de ter conexão ([D-023](DECISOES.md)) |
 | `ocorrido_em` | Quando aconteceu, no fuso do paciente |
 | `registrado_em` | Quando ele abriu o app e marcou |
 | `tipo`, `dados` | |

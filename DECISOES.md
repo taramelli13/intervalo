@@ -292,6 +292,19 @@ Convenção: entrada nova vai no fim, nunca se reescreve entrada antiga. Se uma 
 
 ---
 
+## D-023 · Fila local no app do paciente, em vez de offline-first completo
+**10/08/2026**
+
+**Contexto.** O protocolo manda o registro acontecer no gatilho: supermercado, restaurante, cozinha à noite, viagem. Nenhum desses lugares tem conexão garantida. A pergunta era se o app inteiro precisa funcionar sem internet.
+
+**Decisão.** Só a escrita do paciente é offline. Os eventos são gravados numa fila local que esvazia quando a conexão volta, com o identificador gerado no dispositivo. Estado — prescrição, meta, plano, cardápio — é escrito por você no consultório e pode exigir conexão.
+
+**Por quê.** O modelo já resolve a parte difícil: como o registro é log append-only ([D-020](DECISOES.md)), inserção não conflita com inserção, e `ocorrido_em` reordena o que chegar fora de hora. Não existe "quem ganha" a decidir, que é o que torna sincronização cara. Fica o valor todo — a tela do dia furado sempre abre, e ela é a mais importante do produto — sem construir motor de sincronização.
+
+**Consequência.** O paciente não consulta o próprio histórico sem conexão, só registra. Ler quatro semanas de evolução offline exigiria o app replicado no dispositivo, e isso vira decisão nova se algum paciente reclamar. O relógio do celular passa a ser fonte de `ocorrido_em`, então o servidor precisa tolerar data que chega adiantada ou atrasada em vez de rejeitar.
+
+---
+
 ## Ganchos de publicação
 
 Decisões que rendem post por contarem uma reviravolta, e não só um resultado:

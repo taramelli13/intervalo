@@ -44,7 +44,7 @@ Pendências que bloqueiam uso com paciente:
 - [ ] Registro diário e cálculo de adesão
 - [ ] Aplicação e escore dos instrumentos, portando `escores.py` para a stack escolhida
 - [ ] Relatório pré-consulta
-- [ ] Offline-first com sincronização e resolução de conflito
+- [ ] Fila local de eventos no app do paciente, que esvazia quando a conexão volta ([D-023](DECISOES.md))
 - [ ] Notificação contextualizada, no gatilho do comportamento, sem cobrança
 - [ ] Consentimento LGPD, exportação e exclusão de dados pelo próprio paciente
 

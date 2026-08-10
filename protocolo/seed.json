@@ -1,5 +1,5 @@
 {
-  "versao": "1.3.0",
+  "versao": "1.4.0",
   "tecnicas": [
     { "id": "instrucao", "rotulo": "Instrução sobre como executar" },
     { "id": "demonstracao", "rotulo": "Demonstração do comportamento" },
@@ -80,6 +80,9 @@
       "barreira": "capacidade",
       "gatilho_sugerido": "Quando eu sentar para almoçar",
       "versao_reduzida": "Pousar o talher nas cinco primeiras garfadas do almoço",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 7,
+      "reduzida_por_semana": 7,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -91,6 +94,9 @@
       "barreira": "capacidade",
       "gatilho_sugerido": "Quando eu me sentar para a refeição principal do dia",
       "versao_reduzida": "Levar pelo menos 15 minutos na refeição principal",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 7,
+      "reduzida_por_semana": 7,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -102,6 +108,9 @@
       "barreira": "capacidade",
       "gatilho_sugerido": "Quando eu der a primeira garfada",
       "versao_reduzida": "Mastigar até desfazer em uma refeição por dia",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 7,
+      "reduzida_por_semana": 7,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -113,6 +122,9 @@
       "barreira": "oportunidade",
       "gatilho_sugerido": "Quando eu terminar de me arrumar de manhã",
       "versao_reduzida": "Tomar café da manhã três dias na semana",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 7,
+      "reduzida_por_semana": 3,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -124,6 +136,9 @@
       "barreira": "oportunidade",
       "gatilho_sugerido": "Quando der o meio da tarde no trabalho",
       "versao_reduzida": "Fazer o lanche da tarde três dias na semana",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 5,
+      "reduzida_por_semana": 3,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -135,6 +150,9 @@
       "barreira": "oportunidade",
       "gatilho_sugerido": "Quando eu guardar as compras",
       "versao_reduzida": "Deixar a fruta visível uma vez por semana, no dia da compra",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 1,
+      "reduzida_por_semana": 1,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -146,6 +164,9 @@
       "barreira": "oportunidade",
       "gatilho_sugerido": "Quando eu terminar de arrumar a cozinha à noite",
       "versao_reduzida": "Tirar da bancada um único item, o que mais me pega",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 7,
+      "reduzida_por_semana": 7,
       "requer_numeros": false,
       "bloqueado_por": ["restricao_rigida"],
       "contraindicacao": "Evitar se o paciente relata restrição severa ou medo de ter comida em casa"
@@ -157,6 +178,9 @@
       "barreira": "oportunidade",
       "gatilho_sugerido": "Quando eu for ao mercado",
       "versao_reduzida": "Ir ao mercado com lista, mesmo sem controlar o horário",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 1,
+      "reduzida_por_semana": 1,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -168,6 +192,9 @@
       "barreira": "oportunidade",
       "gatilho_sugerido": "Quando eu montar o prato do jantar",
       "versao_reduzida": "Servir no prato e deixar a panela fora do alcance da mesa",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 7,
+      "reduzida_por_semana": 7,
       "requer_numeros": false,
       "bloqueado_por": ["restricao_rigida"],
       "contraindicacao": "Evitar quando houver histórico de restrição ou preocupação com quantidade"
@@ -179,6 +206,9 @@
       "barreira": "oportunidade",
       "gatilho_sugerido": "Quando eu cozinhar no fim de semana",
       "versao_reduzida": "Deixar uma opção pronta a cada duas semanas",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 1,
+      "reduzida_por_semana": 0.5,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -190,6 +220,9 @@
       "barreira": "motivacao",
       "gatilho_sugerido": "Quando eu abrir a geladeira",
       "versao_reduzida": "Escrever o motivo uma vez e guardar no celular",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 7,
+      "reduzida_por_semana": 1,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": "Evitar motivo ligado a peso ou aparência"
@@ -201,6 +234,9 @@
       "barreira": "oportunidade",
       "gatilho_sugerido": "Quando eu montar o prato do almoço",
       "versao_reduzida": "Incluir um vegetal no almoço três dias na semana",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 7,
+      "reduzida_por_semana": 3,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -212,6 +248,9 @@
       "barreira": "oportunidade",
       "gatilho_sugerido": "Quando eu montar o prato do jantar",
       "versao_reduzida": "Incluir um vegetal no jantar três dias na semana",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 7,
+      "reduzida_por_semana": 3,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -223,6 +262,9 @@
       "barreira": "capacidade",
       "gatilho_sugerido": "Quando eu preparar o café da manhã",
       "versao_reduzida": "Incluir proteína no café da manhã três dias na semana",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 7,
+      "reduzida_por_semana": 3,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -234,6 +276,9 @@
       "barreira": "oportunidade",
       "gatilho_sugerido": "Quando eu fizer o lanche da tarde",
       "versao_reduzida": "Incluir fruta no lanche três dias na semana",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 7,
+      "reduzida_por_semana": 3,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -245,6 +290,9 @@
       "barreira": "oportunidade",
       "gatilho_sugerido": "Quando eu sentar na mesa de trabalho de manhã",
       "versao_reduzida": "Deixar a garrafa cheia na mesa, sem meta de quantidade",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 7,
+      "reduzida_por_semana": 7,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -256,6 +304,9 @@
       "barreira": "capacidade",
       "gatilho_sugerido": "Quando eu pegar o prato para me servir",
       "versao_reduzida": "Montar o prato nessa ordem no almoço",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 7,
+      "reduzida_por_semana": 7,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -267,6 +318,9 @@
       "barreira": "capacidade",
       "gatilho_sugerido": "Quando eu terminar o que está no prato",
       "versao_reduzida": "Esperar antes de repetir, sem se comprometer a não repetir",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 7,
+      "reduzida_por_semana": 7,
       "requer_numeros": false,
       "bloqueado_por": ["restricao_rigida"],
       "contraindicacao": "Evitar com restrição rígida — vira mais uma regra de proibição"
@@ -278,6 +332,9 @@
       "barreira": "oportunidade",
       "gatilho_sugerido": "Quando bater vontade de beliscar fora do horário",
       "versao_reduzida": "Concentrar o que eu como fora de hora em um único momento do dia",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 7,
+      "reduzida_por_semana": 7,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -289,6 +346,9 @@
       "barreira": "oportunidade",
       "gatilho_sugerido": "Quando eu programar o dia de manhã",
       "versao_reduzida": "Manter horário parecido em uma refeição do dia",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 5,
+      "reduzida_por_semana": 5,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -300,6 +360,9 @@
       "barreira": "capacidade",
       "gatilho_sugerido": "Quando eu perceber que já faz tempo desde a última refeição",
       "versao_reduzida": "Evitar o intervalo longo apenas nos dias de trabalho",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 7,
+      "reduzida_por_semana": 5,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -311,6 +374,9 @@
       "barreira": "oportunidade",
       "gatilho_sugerido": "Quando eu for comer qualquer coisa",
       "versao_reduzida": "Comer sentado à mesa na refeição principal",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 7,
+      "reduzida_por_semana": 7,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -322,6 +388,9 @@
       "barreira": "oportunidade",
       "gatilho_sugerido": "Quando eu sentar para o jantar",
       "versao_reduzida": "Fazer uma refeição sem tela três dias na semana",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 7,
+      "reduzida_por_semana": 3,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -333,6 +402,9 @@
       "barreira": "oportunidade",
       "gatilho_sugerido": "Quando eu terminar de jantar na véspera",
       "versao_reduzida": "Levar marmita dois dias na semana",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 5,
+      "reduzida_por_semana": 2,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -344,6 +416,9 @@
       "barreira": "oportunidade",
       "gatilho_sugerido": "Quando eu chegar em casa hoje",
       "versao_reduzida": "Contar para uma pessoa, sem pedir que ela participe",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 1,
+      "reduzida_por_semana": 1,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -355,6 +430,9 @@
       "barreira": "motivacao",
       "gatilho_sugerido": "Quando eu sentar no sofá no domingo à noite",
       "versao_reduzida": "Escolher o jantar de um dia da semana",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 1,
+      "reduzida_por_semana": 1,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -366,6 +444,9 @@
       "barreira": "motivacao",
       "gatilho_sugerido": "Quando eu sentar no sofá no domingo à noite",
       "versao_reduzida": "Olhar como foi a semana, sem precisar escolher meta nova",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 1,
+      "reduzida_por_semana": 1,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -377,6 +458,9 @@
       "barreira": "capacidade",
       "gatilho_sugerido": "Quando eu for comer fora do horário das refeições",
       "versao_reduzida": "Nomear a emoção depois de comer, se não der antes",
+      "regime_padrao": "oportunistico",
+      "alvo_por_semana": null,
+      "reduzida_por_semana": null,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -388,6 +472,9 @@
       "barreira": "oportunidade",
       "gatilho_sugerido": "Quando eu me pegar indo à cozinha sem fome",
       "versao_reduzida": "Olhar o cardápio de regulação, mesmo que eu decida comer",
+      "regime_padrao": "oportunistico",
+      "alvo_por_semana": null,
+      "reduzida_por_semana": null,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": "Exige o cardápio de regulação preenchido na consulta"
@@ -399,6 +486,9 @@
       "barreira": "capacidade",
       "gatilho_sugerido": "Quando eu sentar para comer depois de um dia pesado",
       "versao_reduzida": "Fazer a pausa em uma refeição por semana",
+      "regime_padrao": "oportunistico",
+      "alvo_por_semana": null,
+      "reduzida_por_semana": null,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -410,6 +500,9 @@
       "barreira": "motivacao",
       "gatilho_sugerido": "Quando o que eu sinto for diferente do que eu combinei",
       "versao_reduzida": "Agir pelo que decidi em uma situação por semana",
+      "regime_padrao": "oportunistico",
+      "alvo_por_semana": null,
+      "reduzida_por_semana": null,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -421,6 +514,9 @@
       "barreira": "oportunidade",
       "gatilho_sugerido": "Quando der o horário combinado à noite",
       "versao_reduzida": "Deitar no horário combinado três dias na semana",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 5,
+      "reduzida_por_semana": 3,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -432,6 +528,9 @@
       "barreira": "oportunidade",
       "gatilho_sugerido": "Quando eu for para a cama",
       "versao_reduzida": "Desligar a tela alguns minutos antes, sem tempo fixo",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 7,
+      "reduzida_por_semana": 7,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -443,6 +542,9 @@
       "barreira": "capacidade",
       "gatilho_sugerido": "Quando o despertador tocar",
       "versao_reduzida": "Manter o horário fixo nos dias de semana",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 7,
+      "reduzida_por_semana": 5,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -454,6 +556,9 @@
       "barreira": "oportunidade",
       "gatilho_sugerido": "Quando eu terminar o almoço",
       "versao_reduzida": "Caminhar no horário fixo três dias na semana",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 7,
+      "reduzida_por_semana": 3,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -465,6 +570,9 @@
       "barreira": "motivacao",
       "gatilho_sugerido": "Quando chegar o dia que eu combinei",
       "versao_reduzida": "Fazer a atividade a cada duas semanas",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 1,
+      "reduzida_por_semana": 0.5,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": "Evitar enquadrar como compensação do que foi comido"
@@ -476,6 +584,9 @@
       "barreira": "capacidade",
       "gatilho_sugerido": "Quando eu chegar no elevador ou no ponto",
       "versao_reduzida": "Fazer isso na ida, não na volta",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 5,
+      "reduzida_por_semana": 5,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -487,6 +598,9 @@
       "barreira": "capacidade",
       "gatilho_sugerido": "Quando eu sentar para comer",
       "versao_reduzida": "Marcar o nível de fome antes de uma refeição por dia",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 7,
+      "reduzida_por_semana": 7,
       "requer_numeros": true,
       "bloqueado_por": [],
       "contraindicacao": "Indisponível em modo sem números"
@@ -498,6 +612,9 @@
       "barreira": "capacidade",
       "gatilho_sugerido": "Quando eu largar o talher no fim da refeição",
       "versao_reduzida": "Marcar a saciedade depois de uma refeição por dia",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 7,
+      "reduzida_por_semana": 7,
       "requer_numeros": true,
       "bloqueado_por": [],
       "contraindicacao": "Indisponível em modo sem números"
@@ -509,6 +626,9 @@
       "barreira": "capacidade",
       "gatilho_sugerido": "Quando o prato estiver na metade",
       "versao_reduzida": "Fazer a pausa do meio do prato em uma refeição por dia",
+      "regime_padrao": "agendado",
+      "alvo_por_semana": 7,
+      "reduzida_por_semana": 7,
       "requer_numeros": false,
       "bloqueado_por": ["compulsao", "restricao_rigida"],
       "contraindicacao": "Indisponível com flag de compulsão e com histórico de restrição"
@@ -520,6 +640,9 @@
       "barreira": "motivacao",
       "gatilho_sugerido": "Quando eu abrir a geladeira fora do horário das refeições",
       "versao_reduzida": "Fazer a pergunta, mesmo que a resposta seja comer do mesmo jeito",
+      "regime_padrao": "oportunistico",
+      "alvo_por_semana": null,
+      "reduzida_por_semana": null,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null
@@ -531,6 +654,9 @@
       "barreira": "capacidade",
       "gatilho_sugerido": "Quando bater uma vontade forte de comer",
       "versao_reduzida": "Observar a vontade por um minuto antes de decidir",
+      "regime_padrao": "oportunistico",
+      "alvo_por_semana": null,
+      "reduzida_por_semana": null,
       "requer_numeros": false,
       "bloqueado_por": [],
       "contraindicacao": null

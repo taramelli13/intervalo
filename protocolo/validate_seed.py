@@ -69,6 +69,16 @@ for c in seed["comportamentos"]:
         assert flag in padroes or flag == "compulsao", f"{ctx}: bloqueio desconhecido {flag}"
     no_doc(c["rotulo"], ctx)
 
+    # sem alvo legivel por maquina a adesao da secao 9 nao calcula, e a recalibragem
+    # automatica nao roda — os dois regimes tem denominadores diferentes
+    alvo, reduzida = c["alvo_por_semana"], c["reduzida_por_semana"]
+    assert c["regime_padrao"] in ("agendado", "oportunistico"), f"{ctx}: regime desconhecido"
+    if c["regime_padrao"] == "agendado":
+        assert 0 < alvo <= 7, f"{ctx}: alvo_por_semana fora de 0..7"
+        assert 0 < reduzida <= alvo, f"{ctx}: versao reduzida nao pode pedir mais que a cheia"
+    else:
+        assert alvo is None and reduzida is None, f"{ctx}: oportunistico nao tem alvo fixo"
+
 for s in seed["situacoes_ancora"]:
     no_doc(s["rotulo"], "situacao-ancora")
 
@@ -101,6 +111,9 @@ for p in padroes:
     cats = [c["id"] for c in seed["categorias"] if p in c["padroes"]]
     disponiveis = [c for c in seed["comportamentos"] if c["categoria"] in cats and p not in c["bloqueado_por"]]
     assert len(disponiveis) >= 3, f"padrao {p}: so {len(disponiveis)} comportamentos disponiveis"
+    # o filtro duplo tambem roda em modo sem numeros, e ai a biblioteca encolhe
+    sem_numeros = [c for c in disponiveis if not c["requer_numeros"]]
+    assert len(sem_numeros) >= 3, f"padrao {p}: so {len(sem_numeros)} disponiveis em modo sem numeros"
 
 # regras de revisao: faixas decrescentes, sem buraco e sem sobreposicao, cobrindo ate 0
 regras = seed["regras_revisao"]

@@ -1,6 +1,6 @@
 # Protocolo clínico — mudança de comportamento alimentar
 
-**Versão 1.3.0** — mantida em sincronia com `seed.json`. Toda mudança clínica sobe a versão nos dois arquivos.
+**Versão 1.4.0** — mantida em sincronia com `seed.json`. Toda mudança clínica sobe a versão nos dois arquivos.
 
 Este documento é o que o app implementa. Quando os dois discordarem, este documento vence e o `seed.json` é corrigido.
 
@@ -498,6 +498,21 @@ O app guarda o problema, a opção escolhida e o resultado da revisão. Três ci
 
 Se a versão reduzida também ficar abaixo de 50%, o problema é diagnóstico: refazer o COM-B com o contexto dos lapsos em mãos.
 
+### Como a adesão é calculada — dois regimes
+
+A tabela acima só funciona se o denominador existir. Ele não é o mesmo para todo comportamento:
+
+| Regime | Denominador | Exemplo |
+|---|---|---|
+| **Agendado** | Alvo semanal combinado na consulta, multiplicado pelas semanas da janela | "Incluir um vegetal no almoço", 7 por semana |
+| **Oportunista** | Número de vezes que o gatilho aconteceu, relatado pelo próprio paciente | "Quando bater uma vontade forte, observar por dois minutos" |
+
+**O comportamento oportunista não tem alvo fixo, e tratá-lo como se tivesse produz falso fracasso.** Quem teve duas vontades fortes na semana e surfou as duas tem adesão de 100%, não de 2 em 7. Marcar esse caso como abaixo de 50% acionaria a redução da meta em cima de um paciente que fez exatamente o combinado — o oposto do que a regra existe para fazer.
+
+Por isso o registro do oportunista precisa das duas respostas, "aconteceu e eu fiz" e "aconteceu e eu não fiz". Semana sem nenhum registro não é adesão zero: é ausência de denominador, e entra no relatório como taxa de registro, nunca como adesão.
+
+O `seed.json` traz o regime e o alvo padrão de cada comportamento. **O valor que vale é o combinado na consulta** — o padrão é ponto de partida da conversa, não prescrição.
+
 ### Automaticidade — SRBAI, a cada 4 semanas
 
 *"O comportamento que combinamos é algo que..."* — escala de 1 a 7:
@@ -614,6 +629,21 @@ Como não houve ensaio em papel, cada ciclo de paciente é gravado com a versão
 
 ## 15. Changelog
 
+### 1.4.0
+
+- **Cada comportamento ganha regime e alvo semanal legíveis por máquina.** As versões reduzidas diziam "três dias na semana" em texto corrido, e a regra de adesão da seção 9 é uma divisão: sem denominador, a recalibragem automática do protocolo não roda em nenhuma meta reduzida
+- Nova subseção na 9 distinguindo **comportamento agendado de comportamento oportunista**. Seis dos 42 são oportunistas, todos de regulação emocional e consciência — os que respondem a um estado interno, não ao relógio
+- Registrado que o alvo do seed é **padrão de conversa**, e que o valor válido é o combinado na consulta
+- Validador passa a cobrar que a versão reduzida nunca peça mais que a cheia, e que o filtro duplo continue oferecendo três opções **depois** do corte do modo sem números
+
+### Pendências para a 1.5
+
+- **Redação em português do DEAS-s** — herdada da 1.3 e ainda bloqueando uso com paciente
+- Escrever os textos que o paciente lê na abertura de cada módulo
+- Definir o fluxo de encaminhamento para psicologia (rede, critério, registro)
+- Confirmar, depois dos primeiros ciclos, se o corte de 45 do TFEQ separa alguma coisa neste público
+- Revisar os alvos padrão com dado do piloto: foram arbitrados por julgamento clínico, sem uso real
+
 ### 1.3.0
 
 - **ECAP transcrita por completo** da publicação de Freitas et al. (2001): 16 itens, 62 alternativas, grade de correção e faixas 17/26. Escore é soma simples, 0 a 46
@@ -622,12 +652,9 @@ Como não houve ensaio em papel, cada ciclo de paciente é gravado com a versão
 - Registrado que a escala de exibição do DEAS-s **não é 50 + 10θ**; usar as âncoras publicadas
 - Faixa alcançável de cada escore verificada por teste: TFEQ-14 26,9–82,2 · DEAS-s θ −1,39 a 3,10 · ECAP 0–46
 
-### Pendências para a 1.4
+### Pendências da 1.3 — nenhuma resolvida na 1.4
 
-- **Redação em português do DEAS-s** — hoje os enunciados estão em inglês, como no artigo. Precisa do DEAS original (Alvarenga, Scagliusi e Philippi, 2010) antes de qualquer uso com paciente
-- Escrever os textos que o paciente lê na abertura de cada módulo
-- Definir o fluxo de encaminhamento para psicologia (rede, critério, registro)
-- Confirmar, depois dos primeiros ciclos, se o corte de 45 do TFEQ separa alguma coisa neste público ou se quase todo mundo cai acima dele
+A 1.4 nasceu de um problema encontrado ao desenhar o modelo de dados, e não da fila de pendências. As quatro continuam abertas e rolaram para a lista da 1.5. A do DEAS-s depende de material externo; a do corte de 45 depende do piloto.
 
 ### 1.2.0
 

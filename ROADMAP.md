@@ -2,7 +2,7 @@
 
 App que estende a presença do nutricionista entre as consultas: comportamentos prescritos na consulta, registro leve no intervalo, relatório de adesão antes do próximo atendimento.
 
-Estado: protocolo clínico na versão 1.4.0, modelo de dados desenhado, e nenhuma linha de app escrita ainda. Isso é decisão, não atraso ([D-005](DECISOES.md)).
+Estado: protocolo clínico na versão 1.4.0, modelo de dados desenhado, telas especificadas, e nenhuma linha de app escrita ainda. Isso é decisão, não atraso ([D-005](DECISOES.md)).
 
 ---
 
@@ -32,9 +32,9 @@ Pendências que bloqueiam uso com paciente:
 
 - [x] Modelo de dados derivado do seed, em `MODELO-DE-DADOS.md`: sete entidades de estado, log de eventos, invariantes, e a tabela que prova que o relatório pré-consulta fecha ([D-019](DECISOES.md) a [D-022](DECISOES.md))
 - [x] Regime e alvo semanal de cada comportamento no seed, sem os quais a adesão de meta reduzida não calcula ([D-021](DECISOES.md))
-- [ ] Telas do paciente: registro em menos de 5 segundos, dia furado, surfar o desejo, evolução por tendência
-- [ ] Telas do profissional: consulta 1, prescrição de comportamento, relatório pré-consulta
-- [ ] Modo sem números como estado de primeira classe do modelo, e não como flag de exibição
+- [x] Telas do paciente em `TELAS.md`: registro em menos de 5 segundos na tela inicial, dia furado, surfar o desejo, evolução por tendência sem eixo numérico ([D-025](DECISOES.md))
+- [x] Telas do profissional em `TELAS.md`: consulta 1 seguindo o roteiro em ordem fixa, prescrição com filtro duplo e régua de confiança, relatório pré-consulta com os sinais no topo
+- [x] Modo sem números como estado de primeira classe: origem e data no modelo, corte na montagem do conteúdo e recusa de evento numérico na escrita (invariante 7), tela sem lógica própria de modo ([D-025](DECISOES.md))
 - [x] Decidir stack: Supabase gratuito em São Paulo + app web em TypeScript, custo zero até o piloto provar adesão ([D-024](DECISOES.md), processo em [DECISAO-STACK.md](DECISAO-STACK.md))
 - [x] Protótipo da fila local validado no celular: eventos registrados em modo avião sobreviveram ao fechamento do navegador e sincronizaram sem duplicar quando a conexão voltou (`prototipos/fila-local/`). Pendente só o teste de paciência: fila presa por 24h no iPhone
 

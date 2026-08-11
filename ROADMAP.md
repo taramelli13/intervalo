@@ -44,7 +44,7 @@ Pendências que bloqueiam uso com paciente:
 
 - [ ] Registro diário e cálculo de adesão
 - [ ] Aplicação e escore dos instrumentos, portando `escores.py` para TypeScript com teste de fuzzing contra a versão Python ([D-024](DECISOES.md))
-- [ ] Suíte de testes provando que a regra de acesso por linha não vaza dado entre pacientes
+- [x] Esquema aplicado no Supabase (região São Paulo) e suíte anti-fuga passando: paciente só vê o próprio dado, escore invisível, evento imutável (`supabase/testes_rls.sql`)
 - [ ] Backup: `pg_dump` diário agendado no consultório e ensaio de restauração mensal
 - [ ] Relatório pré-consulta
 - [ ] Fila local de eventos no app do paciente, que esvazia quando a conexão volta ([D-023](DECISOES.md))

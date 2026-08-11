@@ -122,7 +122,8 @@ begin
   select count(*) into a from aplicacoes_instrumento;
   if p <> 2 or e <> 2 or a <> 1 then
     raise exception 'ERRO: profissional nao enxerga a carteira inteira — uid=%, papel=%, pacientes=% (esperado 2), eventos=% (esperado 2), aplicacoes=% (esperado 1)',
-      coalesce(auth.uid()::text, 'NULO'), coalesce(papel_atual(), 'NULO'), p, e, a;
+      coalesce(auth.uid()::text, 'NULO'),
+      coalesce((select papel from perfis where user_id = auth.uid()), 'NULO'), p, e, a;
   end if;
 end $$;
 

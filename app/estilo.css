@@ -1,0 +1,21 @@
+/* o mesmo tom do protótipo: sistema, sem framework */
+body { font-family: system-ui, sans-serif; max-width: 28rem; margin: 0 auto; padding: 1rem; line-height: 1.5; color: #222; }
+body.larga { max-width: 52rem; }
+h1 { font-size: 1.25rem; }
+h2 { font-size: 1.05rem; margin-top: 1.6rem; }
+button { font-size: 1rem; padding: 0.7rem 1rem; margin: 0.2rem 0.3rem 0.2rem 0; border-radius: 8px; border: 1px solid #888; background: #f2f2f2; cursor: pointer; }
+button:active { background: #ddd; }
+button.primario { background: #1d5b2e; color: #fff; border-color: #1d5b2e; }
+input, select, textarea { font-size: 1rem; padding: 0.5rem; border: 1px solid #aaa; border-radius: 6px; width: 100%; box-sizing: border-box; margin: 0.2rem 0 0.6rem; }
+label { font-weight: 600; font-size: 0.9rem; }
+.cartao { border: 1px solid #ddd; border-radius: 10px; padding: 0.9rem 1rem; margin: 0.8rem 0; }
+.quando { color: #555; font-size: 0.95rem; }
+#estado { padding: 0.5rem 0.8rem; border-radius: 6px; margin: 0.8rem 0; font-weight: 600; }
+.on { background: #e2f2e6; color: #1d5b2e; }
+.off { background: #f7e3e0; color: #8a2f24; }
+.aviso { background: #fdf3d7; border-radius: 6px; padding: 0.6rem 0.8rem; }
+.sinal { background: #f7e3e0; border-radius: 6px; padding: 0.5rem 0.8rem; margin: 0.4rem 0; }
+table { border-collapse: collapse; width: 100%; font-size: 0.92rem; }
+th, td { text-align: left; border-bottom: 1px solid #e5e5e5; padding: 0.4rem 0.5rem; }
+small, .mudo { color: #777; }
+dialog { border: 1px solid #aaa; border-radius: 10px; max-width: 26rem; }

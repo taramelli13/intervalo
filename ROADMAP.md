@@ -36,7 +36,7 @@ Pendências que bloqueiam uso com paciente:
 - [ ] Telas do profissional: consulta 1, prescrição de comportamento, relatório pré-consulta
 - [ ] Modo sem números como estado de primeira classe do modelo, e não como flag de exibição
 - [x] Decidir stack: Supabase gratuito em São Paulo + app web em TypeScript, custo zero até o piloto provar adesão ([D-024](DECISOES.md), processo em [DECISAO-STACK.md](DECISAO-STACK.md))
-- [ ] Protótipo da fila local no celular, com corte de conexão de verdade — antes de qualquer tela, porque é o único componente que pode invalidar a stack
+- [x] Protótipo da fila local validado no celular: eventos registrados em modo avião sobreviveram ao fechamento do navegador e sincronizaram sem duplicar quando a conexão voltou (`prototipos/fila-local/`). Pendente só o teste de paciência: fila presa por 24h no iPhone
 
 ---
 

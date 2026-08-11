@@ -19,7 +19,7 @@ Protocolo clínico na versão 1.4.0, modelo de dados desenhado, e nenhuma linha 
 | [`protocolo/escores.py`](protocolo/escores.py) | Escores dos instrumentos, TRI e soma |
 | [`protocolo/validate_seed.py`](protocolo/validate_seed.py) | Trava divergência entre documento e seed |
 | [`MODELO-DE-DADOS.md`](MODELO-DE-DADOS.md) | Entidades, log de eventos e invariantes, derivados do protocolo |
-| [`DECISOES.md`](DECISOES.md) | Registro de decisões, D-001 a D-022 |
+| [`DECISOES.md`](DECISOES.md) | Registro de decisões, D-001 a D-025 |
 | [`ROADMAP.md`](ROADMAP.md) | Fases, pendências e o que está fora de escopo |
 
 ```bash

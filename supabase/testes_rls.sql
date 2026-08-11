@@ -115,14 +115,19 @@ select set_config('request.jwt.claims',
   '{"sub": "00000000-0000-4000-a000-000000000001", "role": "authenticated"}', true);
 
 do $$
+declare p int; e int; a int;
 begin
-  if (select count(*) from pacientes) <> 2 or (select count(*) from eventos) <> 2
-     or (select count(*) from aplicacoes_instrumento) <> 1 then
-    raise exception 'ERRO: profissional nao enxerga a carteira inteira';
+  select count(*) into p from pacientes;
+  select count(*) into e from eventos;
+  select count(*) into a from aplicacoes_instrumento;
+  if p <> 2 or e <> 2 or a <> 1 then
+    raise exception 'ERRO: profissional nao enxerga a carteira inteira — uid=%, papel=%, pacientes=% (esperado 2), eventos=% (esperado 2), aplicacoes=% (esperado 1)',
+      coalesce(auth.uid()::text, 'NULO'), coalesce(papel_atual(), 'NULO'), p, e, a;
   end if;
 end $$;
 
 reset role;
-do $$ begin raise notice 'ok — nenhuma fuga: paciente so ve o proprio dado, escore invisivel, evento imutavel'; end $$;
-
 rollback;  -- nada disso fica no banco
+
+-- o editor do Supabase esconde os "raise notice": o veredito sai como resultado
+select 'ok — nenhuma fuga: paciente so ve o proprio dado, escore invisivel, evento imutavel' as resultado;

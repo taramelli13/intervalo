@@ -2,7 +2,7 @@
 
 App que estende a presença do nutricionista entre as consultas: comportamentos prescritos na consulta, registro leve no intervalo, relatório de adesão antes do próximo atendimento.
 
-Estado: protocolo clínico na versão 1.4.0, modelo de dados desenhado, telas especificadas, e nenhuma linha de app escrita ainda. Isso é decisão, não atraso ([D-005](DECISOES.md)).
+Estado: protocolo clínico na versão 1.4.0, modelo de dados desenhado, telas especificadas, e o MVP escrito em `app/` com testes passando. A ordem — protocolo antes de tela, tela antes de código — foi decisão, não atraso ([D-005](DECISOES.md)).
 
 ---
 

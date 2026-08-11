@@ -318,6 +318,19 @@ Convenção: entrada nova vai no fim, nunca se reescreve entrada antiga. Se uma 
 
 ---
 
+## D-025 · Policies sem security definer
+**11/08/2026**
+
+**Contexto.** A suíte anti-fuga falhou no projeto real: a função `papel_atual()`, usada pelas policies do profissional, devolvia NULL no meio do teste — com a linha presente no banco e a mesma função íntegra quando sondada em isolamento. Duas rodadas de diagnóstico não acharam causa determinística; o comportamento dependia do estado da sessão no editor hospedado.
+
+**Decisão.** Remover as duas funções `security definer` e reescrever as 17 policies com subquery inline, lendo `perfis` e `pacientes` diretamente (migração 0002). O RLS das próprias tabelas garante que cada usuário só lê a própria linha, então o resultado é o mesmo sem o mecanismo.
+
+**Por quê.** Segurança de dado de saúde não se constrói sobre peça que funciona "às vezes". Entre perseguir um mistério de ambiente hospedado e remover a peça onde ele mora, remover é mais barato e deixa menos superfície: uma indireção a menos entre a policy e o dado.
+
+**Consequência.** A suíte passou na primeira execução após a troca. O custo é repetição textual nas policies — a mesma subquery em 10 lugares — aceito de bom grado: policy que se lê inteira no próprio lugar é mais auditável que policy que chama função. E ficou a lição de processo: a suíte anti-fuga pegou isso **antes de existir paciente no banco**, que é o único momento barato de pegar.
+
+---
+
 ## Ganchos de publicação
 
 Decisões que rendem post por contarem uma reviravolta, e não só um resultado:
@@ -333,3 +346,4 @@ Decisões que rendem post por contarem uma reviravolta, e não só um resultado:
 | "O validador que impede o documento clínico e o código de divergirem" | D-006 |
 | "Desenhar o banco encontrou um furo no protocolo que a leitura clínica não pegou" | D-021 |
 | "Levei a decisão a dois revisores e eles se contradisseram no ponto mais perigoso" | D-024 |
+| "O teste de segurança falhou antes do primeiro paciente — e era para isso que ele existia" | D-025 |

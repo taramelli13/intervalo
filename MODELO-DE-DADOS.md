@@ -113,6 +113,7 @@ Coisas que o banco ou a camada de escrita precisa garantir, e que não podem dep
 4. Evento é append-only. Correção é evento novo
 5. Escore de instrumento **não é exposto ao paciente** (seção 13) — a separação é de leitura, e a leitura do paciente não tem esse campo
 6. Comportamento com `requer_numeros` não é ofertável a paciente em modo sem números, e o corte roda na montagem da biblioteca
+7. Evento `fome_saciedade` ou `peso` de paciente em modo sem números é **recusado na camada de escrita**, não só omitido da tela — cliente desatualizado ou requisição direta não furam o modo ([D-027](DECISOES.md))
 
 ---
 

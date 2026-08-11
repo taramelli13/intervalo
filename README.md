@@ -20,7 +20,7 @@ Protocolo clínico na versão 1.4.0, banco no Supabase com suíte anti-fuga, e o
 | [`protocolo/validate_seed.py`](protocolo/validate_seed.py) | Trava divergência entre documento e seed |
 | [`MODELO-DE-DADOS.md`](MODELO-DE-DADOS.md) | Entidades, log de eventos e invariantes, derivados do protocolo |
 | [`app/`](app/README.md) | O MVP: as duas telas, fila local, escores e relatório |
-| [`DECISOES.md`](DECISOES.md) | Registro de decisões, D-001 a D-026 |
+| [`DECISOES.md`](DECISOES.md) | Registro de decisões, D-001 a D-027 |
 | [`ROADMAP.md`](ROADMAP.md) | Fases, pendências e o que está fora de escopo |
 
 ```bash

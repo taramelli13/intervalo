@@ -344,6 +344,19 @@ Convenção: entrada nova vai no fim, nunca se reescreve entrada antiga. Se uma 
 
 ---
 
+## D-027 · Telas desenhadas por comportamento, e o modo sem números vira ausência garantida em três camadas
+**11/08/2026**
+
+**Contexto.** Últimas tarefas da fase 1: telas do paciente, telas do profissional, e o modo sem números como estado de primeira classe em vez de flag de exibição. O material para derivá-las já existia todo no protocolo 1.4.0 e no modelo de dados.
+
+**Decisão.** `TELAS.md` especifica as telas pelo comportamento, não pelo visual: o que cada uma lê e escreve no modelo, e a variante sem números de cada uma. Três escolhas estruturam o documento. Primeira: abrir o app é chegar na tela de registro — o orçamento de 5 segundos é gasto destravando o celular, não navegando. Segunda: o modo sem números corta em três camadas — montagem da biblioteca, montagem do conteúdo do paciente, e recusa de evento numérico na camada de escrita (invariante 7, novo no modelo) — e a tela é a camada que menos trabalha: não mostra o que não recebeu, sem cadeado e sem "recurso indisponível". Terceira: a evolução do paciente mostra tendência sem eixo numérico mesmo fora do modo sem números, porque número de adesão é ferramenta clínica do profissional.
+
+**Por quê.** Ocultar na tela é a versão frágil: cliente antigo ou requisição direta exibiriam ou gravariam o que o modo proíbe, e é exatamente o paciente de triagem positiva que não pode depender disso. E cadeado visível vira pergunta na consulta — "por que meu app é diferente?" — que o enquadramento da seção 1a existe para evitar. Ausência na montagem resolve os dois.
+
+**Consequência.** As telas não têm lógica própria de modo, o que reduz o custo da fase 2: a variante sem números é responsabilidade do servidor, testável na suíte anti-fuga junto com as regras por linha. A tela de evolução em modo sem números não existe, e a percepção de progresso desse paciente fica explicitamente a cargo da consulta. Layout fino, cor e tipografia seguem em aberto para a fase 2, dentro do que o comportamento fixado permite.
+
+---
+
 ## Ganchos de publicação
 
 Decisões que rendem post por contarem uma reviravolta, e não só um resultado:

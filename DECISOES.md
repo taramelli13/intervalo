@@ -331,6 +331,19 @@ Convenção: entrada nova vai no fim, nunca se reescreve entrada antiga. Se uma 
 
 ---
 
+## D-026 · MVP: a "notificação" é a tela, e o consentimento é o único update do paciente
+**11/08/2026**
+
+**Contexto.** Implementação do MVP (`app/`): registro diário com fila local, escores portados com fuzzing, relatório pré-consulta, LGPD. Três pontos exigiram decisão em vez de só código: como fica a "notificação contextualizada" do roadmap num app que decidiu não ter lembrete (D-024); como o paciente aceita e revoga consentimento se ele não tem update em `pacientes`; e o que significa "exclusão de dados" num log que é append-only (D-020).
+
+**Decisão.** (1) A notificação da v1 é o próprio quando/então da prescrição abrindo a tela de registro — o gatilho é situacional, então o contexto certo é o momento em que o paciente pega o celular, não um horário. Push fica para quando houver app instalável. (2) Consentimento entra e sai por duas funções `rpc` (`0003_consentimento.sql`) que só tocam a própria linha; sem policy de update, porque policy daria a linha inteira e o consentimento é só três colunas. (3) Exportação é botão na tela do paciente; exclusão definitiva é ato do profissional a pedido, executado com service role, porque apagar evento exige passar por cima do trigger de imutabilidade — e é para exigir.
+
+**Por quê.** As três respostas saem das decisões anteriores em vez de contrariá-las: D-024 já tinha matado o lembrete, D-020 já tinha tornado o evento imutável, e D-025 já tinha estabelecido que segurança mora no banco — as funções de consentimento são chamada explícita e testável, não a peça de policy que aquela decisão removeu.
+
+**Consequência.** A fase 2 fecha sem nenhuma peça nova de infraestrutura: zero push, zero backend próprio, uma migração de duas funções. O que ficou de fora e está anotado no `app/README.md`: DEAS-s autoaplicado espera a redação em português, e o disparo periódico do SRBAI espera o paciente poder saber quando foi a última aplicação sem enxergar escore.
+
+---
+
 ## Ganchos de publicação
 
 Decisões que rendem post por contarem uma reviravolta, e não só um resultado:

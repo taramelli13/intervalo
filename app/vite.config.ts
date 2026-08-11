@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import { resolve } from "node:path";
 
 export default defineConfig({
+  base: "./", // GitHub Pages serve em /intervalo/, então tudo é relativo
   // o seed vive fora da raiz do app: é o mesmo arquivo que o validador testa (D-019)
   server: { fs: { allow: [".."] } },
   build: {

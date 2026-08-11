@@ -209,8 +209,9 @@ function formInstrumento(pacienteId: string, nome: string, prescricaoId?: string
       <p>${i + 1}. ${t}<br><label><input type="radio" name="i${i}" value="1" required style="width:auto"> Sim</label>
       <label><input type="radio" name="i${i}" value="0" style="width:auto"> Não</label></p>`).join("");
   else if (nome === "tfeq14")
+    // itens 13 e 14 têm opções próprias no seed; os demais usam as padrão
     corpo = inst.itens.map((it: any, i: number) => `
-      <p>${it.n}. ${it.texto}<br>${inst.opcoes_padrao.map((o: string, j: number) =>
+      <p>${it.n}. ${it.texto}<br>${(it.opcoes ?? inst.opcoes_padrao).map((o: string, j: number) =>
         `<label><input type="radio" name="i${i}" value="${j}" required style="width:auto"> ${o}</label>`).join(" ")}</p>`).join("");
   else if (nome === "ecap")
     corpo = inst.itens.map((it: any, i: number) => `

@@ -53,11 +53,18 @@ export function relatorio(dados: {
   const semanasAtras = (n: number) => new Date(agora.getTime() - n * 7 * 86400_000);
   const ativas = dados.prescricoes.filter((p) => !p.encerrada_em);
 
-  // 1 — adesão por comportamento, 2 e 4 semanas, com conduta calculada
+  // 1 — adesão por comportamento, 2 e 4 semanas, com conduta calculada.
+  // A regra do seed revisa APÓS as semanas da janela: prescrição mais nova
+  // que isso ainda não tem o que revisar, e "reduzir" seria ruído.
+  const janelaRegra = Math.max(...REGRAS.map((r) => r.semanas));
   const adesaoPorComportamento = ativas.map((p) => {
     const a2 = adesao(p, dados.eventos, semanasAtras(2), agora);
     const a4 = adesao(p, dados.eventos, semanasAtras(4), agora);
-    return { prescricao: p, semanas2: a2, semanas4: a4, conduta: condutaCalculada(a2) };
+    const idadeSemanas = (agora.getTime() - new Date(p.iniciada_em).getTime()) / (7 * 86400_000);
+    const conduta = idadeSemanas < janelaRegra
+      ? "recem-prescrita — revisar apos 2 semanas"
+      : condutaCalculada(a2);
+    return { prescricao: p, semanas2: a2, semanas4: a4, conduta };
   });
 
   // 2 e 7b — lapsos agrupados por situação; concentração é sinal

@@ -35,6 +35,14 @@ test("adesao 2 e 4 semanas com conduta, so de prescricao ativa", () => {
   assert.equal(r.adesaoPorComportamento[0].conduta, "progredir");
 });
 
+test("prescricao mais nova que a janela da regra nao recebe conduta de reducao", () => {
+  const r = relatorio({
+    ...vazio,
+    prescricoes: [presc({ iniciada_em: "2026-01-25T00:00:00Z" })], // 1 semana antes de `agora`
+  });
+  assert.match(r.adesaoPorComportamento[0].conduta, /recem-prescrita/);
+});
+
 test("sinal 7b: metade ou mais dos lapsos na mesma situacao", () => {
   const eventos = [
     diasAtras(1, { tipo: "lapso", dados: { situacao_id: "fome_noite" } }),

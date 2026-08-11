@@ -35,14 +35,17 @@ Pendências que bloqueiam uso com paciente:
 - [ ] Telas do paciente: registro em menos de 5 segundos, dia furado, surfar o desejo, evolução por tendência
 - [ ] Telas do profissional: consulta 1, prescrição de comportamento, relatório pré-consulta
 - [ ] Modo sem números como estado de primeira classe do modelo, e não como flag de exibição
-- [ ] Decidir stack, que segue em aberto de propósito
+- [x] Decidir stack: Supabase gratuito em São Paulo + app web em TypeScript, custo zero até o piloto provar adesão ([D-024](DECISOES.md), processo em [DECISAO-STACK.md](DECISAO-STACK.md))
+- [ ] Protótipo da fila local no celular, com corte de conexão de verdade — antes de qualquer tela, porque é o único componente que pode invalidar a stack
 
 ---
 
 ## Fase 2, MVP
 
 - [ ] Registro diário e cálculo de adesão
-- [ ] Aplicação e escore dos instrumentos, portando `escores.py` para a stack escolhida
+- [ ] Aplicação e escore dos instrumentos, portando `escores.py` para TypeScript com teste de fuzzing contra a versão Python ([D-024](DECISOES.md))
+- [ ] Suíte de testes provando que a regra de acesso por linha não vaza dado entre pacientes
+- [ ] Backup: `pg_dump` diário agendado no consultório e ensaio de restauração mensal
 - [ ] Relatório pré-consulta
 - [ ] Fila local de eventos no app do paciente, que esvazia quando a conexão volta ([D-023](DECISOES.md))
 - [ ] Notificação contextualizada, no gatilho do comportamento, sem cobrança

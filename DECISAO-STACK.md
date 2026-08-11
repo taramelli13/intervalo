@@ -149,4 +149,26 @@ Três coisas entraram na comparação sem verificação independente.
 
 ---
 
-Quando a decisão for tomada, ela vira D-024 em [`DECISOES.md`](DECISOES.md) e este documento fica como o registro de como se chegou nela.
+---
+
+## Desfecho — decisão tomada
+
+O documento foi levado a duas revisões externas. O que elas mudaram:
+
+**Onde convergiram, foi acatado.** Backup e recuperação não existiam no plano e viraram requisito de v1 (`pg_dump` diário no computador do consultório, ensaio de restauração mensal). A pergunta ao CRN foi respondida antes de tudo — não há restrição de hospedagem. E o protótipo da fila local passou a vir antes de qualquer tela, porque é idêntico nos dois cenários e é o único componente capaz de invalidar a decisão inteira.
+
+**Onde se contradisseram, ganhou o banco.** Uma revisão sugeriu validar permissão no cliente para reduzir amarração; a outra, confiar na regra por linha do PostgreSQL com testes de integração. A primeira estava errada: numa plataforma pronta, a regra por linha é a única coisa entre um paciente e os dados do outro — permissão no cliente não é permissão. A redução de amarração se faz evitando recursos periféricos, não a segurança.
+
+**A restrição que fechou a escolha veio do objetivo, não da técnica.** O MVP existe para testar adesão e efetividade a custo zero. Isso eliminou a micro-API Python (serviço gratuito hiberna, e partida a frio na frente do paciente não serve) e definiu a stack:
+
+| Peça | Escolha |
+|---|---|
+| Banco + login | Supabase gratuito, região São Paulo |
+| App, os dois perfis | Página web em TypeScript, hospedagem estática gratuita |
+| Escore | Portado para TypeScript, travado por fuzzing: milhares de vetores gerados pelo `escores.py`, comparados pelo teste do porte |
+| Backup | `pg_dump` diário agendado no consultório |
+| Manter acordado | Ping semanal via GitHub Actions |
+
+O risco de pausa do plano gratuito, apontado pelas duas revisões, é por inatividade — e piloto com registro diário não fica inativo; o ping cobre o feriado. Gatilho de upgrade para o plano pago: primeira pausa ou perda de dado, ou o piloto provar adesão.
+
+Registrada como [D-024](DECISOES.md). Este documento fica como o registro de como se chegou nela.

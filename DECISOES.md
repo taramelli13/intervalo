@@ -305,6 +305,19 @@ Convenção: entrada nova vai no fim, nunca se reescreve entrada antiga. Se uma 
 
 ---
 
+## D-024 · Stack de custo zero para o MVP
+**11/08/2026**
+
+**Contexto.** `DECISAO-STACK.md` foi levado a duas revisões externas. Elas convergiram em quatro pontos (backup e recuperação ausentes do plano, plano gratuito arriscado, pergunta ao CRN primeiro, fila local como protótipo antes da stack), se contradisseram num quinto — uma mandou validar permissão no cliente, a outra confiar na regra por linha do banco com testes — e uma propôs empacotar o `escores.py` como micro-API para nunca traduzir nada. O CRN foi consultado e não impõe restrição de hospedagem. O objetivo do MVP ficou definido: testar adesão e efetividade sem gastar nada.
+
+**Decisão.** Supabase gratuito com região São Paulo (banco e login), app web em TypeScript com hospedagem estática gratuita para os dois perfis, escore portado para TypeScript, `pg_dump` diário agendado no computador do consultório, ping semanal para o projeto nunca ficar inativo. A micro-API Python fica descartada enquanto o custo for zero: serviço gratuito hiberna, e partida a frio de um minuto na frente do paciente não serve.
+
+**Por quê.** Custo zero elimina as variantes, e o risco de pausa do plano gratuito — apontado nas duas revisões — é por inatividade, coisa que um piloto com registro diário não tem; o ping cobre o caso do feriado. A permissão é validada no banco, nunca no cliente: numa plataforma pronta a regra por linha é a única coisa entre um paciente e os dados do outro. O porte do escore é aceitável porque o autocheck existente vira arquivo de referência: milhares de vetores de resposta gerados pelo Python, comparados pelo teste do TypeScript. E as respostas item a item ficam gravadas, então escore é recalculável por qualquer implementação, para sempre.
+
+**Consequência.** Duas implementações do escore para manter em sincronia — dívida assumida, travada por teste. Três requisitos sobem de "depois a gente vê" para requisito de v1: suíte de testes provando que a regra por linha não vaza dado entre pacientes, rotina de backup com ensaio de restauração, e o protótipo da fila local antes de qualquer tela. Gatilho de upgrade para o plano pago: primeira pausa ou perda de dado, ou o piloto provar adesão. Usar do Supabase só banco e login — cada recurso periférico a mais é custo de saída.
+
+---
+
 ## Ganchos de publicação
 
 Decisões que rendem post por contarem uma reviravolta, e não só um resultado:
@@ -319,3 +332,4 @@ Decisões que rendem post por contarem uma reviravolta, e não só um resultado:
 | "Somar as respostas dava um número plausível e errado" | D-015 |
 | "O validador que impede o documento clínico e o código de divergirem" | D-006 |
 | "Desenhar o banco encontrou um furo no protocolo que a leitura clínica não pegou" | D-021 |
+| "Levei a decisão a dois revisores e eles se contradisseram no ponto mais perigoso" | D-024 |

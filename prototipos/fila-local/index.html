@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Protótipo — fila local</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 26rem; margin: 0 auto; padding: 1rem; line-height: 1.5; }
+  h1 { font-size: 1.2rem; }
+  button { font-size: 1.1rem; padding: 0.8rem 1rem; margin: 0.2rem 0.3rem 0.2rem 0; border-radius: 6px; border: 1px solid #888; background: #f2f2f2; }
+  button:active { background: #ddd; }
+  #estado { padding: 0.5rem 0.8rem; border-radius: 6px; margin: 0.8rem 0; font-weight: 600; }
+  .on  { background: #e2f2e6; color: #1d5b2e; }
+  .off { background: #f7e3e0; color: #8a2f24; }
+  ul { padding-left: 1.2rem; font-size: 0.85rem; color: #444; }
+  small { color: #777; }
+</style>
+</head>
+<body>
+<h1>Fila local — protótipo (D-024)</h1>
+<p>Registra num banco local do navegador e sincroniza quando há conexão. Teste com o wi-fi desligado de verdade.</p>
+
+<div id="estado">carregando…</div>
+
+<button onclick="registrar('feito')">Feito</button>
+<button onclick="registrar('nao_feito')">Não feito</button>
+<button onclick="registrar('lapso')">Lapso</button>
+
+<p><b>Na fila:</b> <span id="fila">0</span> · <b>enviados:</b> <span id="enviados">0</span></p>
+<ul id="lista"></ul>
+<small>Feche o navegador e reabra: a fila tem que continuar aqui. No iPhone, adicione à tela de início antes de testar — página solta o Safari pode limpar.</small>
+
+<script>
+// uuid: crypto.randomUUID exige contexto seguro, e o teste roda em http:// na rede local
+const uuid = () => crypto.randomUUID ? crypto.randomUUID() :
+  "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, c =>
+    (c === "x" ? Math.random() * 16 | 0 : Math.random() * 4 | 8).toString(16));
+
+let db, enviados = 0, falhas = 0;
+
+const abrir = new Promise((ok, erro) => {
+  const req = indexedDB.open("fila-prototipo", 1);
+  req.onupgradeneeded = () => req.result.createObjectStore("fila", { keyPath: "id" });
+  req.onsuccess = () => { db = req.result; ok(); };
+  req.onerror = () => erro(req.error);
+});
+
+const naFila = () => new Promise(ok => {
+  const req = db.transaction("fila").objectStore("fila").getAll();
+  req.onsuccess = () => ok(req.result);
+});
+
+async function registrar(tipo) {
+  const agora = new Date().toISOString();
+  const ev = { id: uuid(), tipo, ocorrido_em: agora, registrado_em: agora };
+  await new Promise(ok => {
+    const tx = db.transaction("fila", "readwrite");
+    tx.objectStore("fila").put(ev);
+    tx.oncomplete = ok;
+  });
+  await render();
+  sincronizar();
+}
+
+async function sincronizar() {
+  const fila = await naFila();
+  if (!fila.length) return;
+  try {
+    const resp = await fetch("/eventos", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(fila),
+    });
+    if (!resp.ok) throw new Error(resp.status);
+    const { aceitos } = await resp.json();
+    await new Promise(ok => {
+      const tx = db.transaction("fila", "readwrite");
+      aceitos.forEach(id => tx.objectStore("fila").delete(id));
+      tx.oncomplete = ok;
+    });
+    enviados += aceitos.length;
+    falhas = 0;
+  } catch {
+    falhas++;
+  }
+  render();
+}
+
+async function render() {
+  const fila = await naFila();
+  document.getElementById("fila").textContent = fila.length;
+  document.getElementById("enviados").textContent = enviados;
+  document.getElementById("lista").innerHTML = fila
+    .map(e => `<li>${e.tipo} · ${e.ocorrido_em.slice(11, 19)}</li>`).join("");
+  const el = document.getElementById("estado");
+  const on = navigator.onLine;
+  el.className = on ? "on" : "off";
+  el.textContent = on
+    ? (falhas ? `conectado, servidor fora do ar (${falhas} tentativas)` : "conectado")
+    : "sem conexão — registrando na fila";
+}
+
+addEventListener("online", sincronizar);
+addEventListener("visibilitychange", () => !document.hidden && sincronizar());
+// tentativa periódica com recuo: 5s sem falha, dobra a cada falha até 1 min
+(async function laco() {
+  await abrir;
+  await render();
+  while (true) {
+    await new Promise(ok => setTimeout(ok, Math.min(60, 5 * 2 ** falhas) * 1000));
+    sincronizar();
+  }
+})();
+</script>
+</body>
+</html>

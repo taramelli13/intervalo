@@ -3,3 +3,4 @@ __pycache__/
 
 # artigos e dissertacoes ficam locais — referencias completas em Fontes/FONTES.md
 Fontes/*.pdf
+prototipos/fila-local/eventos.jsonl

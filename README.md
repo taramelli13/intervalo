@@ -10,7 +10,7 @@ Sou nutricionista e construo este app para usar no meu próprio consultório. O 
 
 ## Estado
 
-Protocolo clínico na versão 1.4.0, modelo de dados desenhado, e nenhuma linha de app escrita ainda. Isso é decisão, não atraso: telas e stack derivam do protocolo, e decidir tela antes de protocolo é decidir no escuro.
+Protocolo clínico na versão 1.4.0, banco no Supabase com suíte anti-fuga, e o MVP escrito em `app/`: registro com fila local, escores portados para TypeScript travados por fuzzing contra o Python, relatório pré-consulta e consentimento LGPD. Falta subir numa hospedagem estática e agendar o backup no consultório — aí começa o piloto.
 
 | | |
 |---|---|
@@ -19,7 +19,8 @@ Protocolo clínico na versão 1.4.0, modelo de dados desenhado, e nenhuma linha 
 | [`protocolo/escores.py`](protocolo/escores.py) | Escores dos instrumentos, TRI e soma |
 | [`protocolo/validate_seed.py`](protocolo/validate_seed.py) | Trava divergência entre documento e seed |
 | [`MODELO-DE-DADOS.md`](MODELO-DE-DADOS.md) | Entidades, log de eventos e invariantes, derivados do protocolo |
-| [`DECISOES.md`](DECISOES.md) | Registro de decisões, D-001 a D-022 |
+| [`app/`](app/README.md) | O MVP: as duas telas, fila local, escores e relatório |
+| [`DECISOES.md`](DECISOES.md) | Registro de decisões, D-001 a D-027 |
 | [`ROADMAP.md`](ROADMAP.md) | Fases, pendências e o que está fora de escopo |
 
 ```bash

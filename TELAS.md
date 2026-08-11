@@ -6,7 +6,7 @@ Dois princípios atravessam tudo:
 
 **O paciente nunca vê escore, percentual ou comparação.** A tela de evolução dele mostra tendência, nunca nota ([seção 12 do protocolo](protocolo/protocolo.md)). Número de adesão é ferramenta clínica do profissional.
 
-**Modo sem números é ausência, não cadeado.** O que o paciente em modo sem números não pode usar simplesmente não existe na tela dele — sem item bloqueado, sem "recurso indisponível", sem indício de que outros pacientes veem algo a mais. O corte roda na montagem do conteúdo e na camada de escrita, nunca na tela ([D-025](DECISOES.md)).
+**Modo sem números é ausência, não cadeado.** O que o paciente em modo sem números não pode usar simplesmente não existe na tela dele — sem item bloqueado, sem "recurso indisponível", sem indício de que outros pacientes veem algo a mais. O corte roda na montagem do conteúdo e na camada de escrita, nunca na tela ([D-027](DECISOES.md)).
 
 ---
 

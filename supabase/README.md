@@ -6,7 +6,7 @@ Esquema derivado de [`MODELO-DE-DADOS.md`](../MODELO-DE-DADOS.md). O arquivo SQL
 
 No SQL Editor do projeto (Dashboard → SQL Editor → New query):
 
-1. Colar e rodar `migrations/0001_esquema.sql`
+1. Colar e rodar os arquivos de `migrations/` na ordem numérica (0001, 0002, 0003…)
 2. Colar e rodar `testes_rls.sql` — tem que terminar com **"ok — nenhuma fuga"** nas mensagens. Ele cria dados de teste e desfaz tudo no final; pode rodar quantas vezes quiser, inclusive em produção
 
 ## Criar o usuário do profissional

@@ -318,7 +318,33 @@ Convenção: entrada nova vai no fim, nunca se reescreve entrada antiga. Se uma 
 
 ---
 
-## D-025 · Telas desenhadas por comportamento, e o modo sem números vira ausência garantida em três camadas
+## D-025 · Policies sem security definer
+**11/08/2026**
+
+**Contexto.** A suíte anti-fuga falhou no projeto real: a função `papel_atual()`, usada pelas policies do profissional, devolvia NULL no meio do teste — com a linha presente no banco e a mesma função íntegra quando sondada em isolamento. Duas rodadas de diagnóstico não acharam causa determinística; o comportamento dependia do estado da sessão no editor hospedado.
+
+**Decisão.** Remover as duas funções `security definer` e reescrever as 17 policies com subquery inline, lendo `perfis` e `pacientes` diretamente (migração 0002). O RLS das próprias tabelas garante que cada usuário só lê a própria linha, então o resultado é o mesmo sem o mecanismo.
+
+**Por quê.** Segurança de dado de saúde não se constrói sobre peça que funciona "às vezes". Entre perseguir um mistério de ambiente hospedado e remover a peça onde ele mora, remover é mais barato e deixa menos superfície: uma indireção a menos entre a policy e o dado.
+
+**Consequência.** A suíte passou na primeira execução após a troca. O custo é repetição textual nas policies — a mesma subquery em 10 lugares — aceito de bom grado: policy que se lê inteira no próprio lugar é mais auditável que policy que chama função. E ficou a lição de processo: a suíte anti-fuga pegou isso **antes de existir paciente no banco**, que é o único momento barato de pegar.
+
+---
+
+## D-026 · MVP: a "notificação" é a tela, e o consentimento é o único update do paciente
+**11/08/2026**
+
+**Contexto.** Implementação do MVP (`app/`): registro diário com fila local, escores portados com fuzzing, relatório pré-consulta, LGPD. Três pontos exigiram decisão em vez de só código: como fica a "notificação contextualizada" do roadmap num app que decidiu não ter lembrete (D-024); como o paciente aceita e revoga consentimento se ele não tem update em `pacientes`; e o que significa "exclusão de dados" num log que é append-only (D-020).
+
+**Decisão.** (1) A notificação da v1 é o próprio quando/então da prescrição abrindo a tela de registro — o gatilho é situacional, então o contexto certo é o momento em que o paciente pega o celular, não um horário. Push fica para quando houver app instalável. (2) Consentimento entra e sai por duas funções `rpc` (`0003_consentimento.sql`) que só tocam a própria linha; sem policy de update, porque policy daria a linha inteira e o consentimento é só três colunas. (3) Exportação é botão na tela do paciente; exclusão definitiva é ato do profissional a pedido, executado com service role, porque apagar evento exige passar por cima do trigger de imutabilidade — e é para exigir.
+
+**Por quê.** As três respostas saem das decisões anteriores em vez de contrariá-las: D-024 já tinha matado o lembrete, D-020 já tinha tornado o evento imutável, e D-025 já tinha estabelecido que segurança mora no banco — as funções de consentimento são chamada explícita e testável, não a peça de policy que aquela decisão removeu.
+
+**Consequência.** A fase 2 fecha sem nenhuma peça nova de infraestrutura: zero push, zero backend próprio, uma migração de duas funções. O que ficou de fora e está anotado no `app/README.md`: DEAS-s autoaplicado espera a redação em português, e o disparo periódico do SRBAI espera o paciente poder saber quando foi a última aplicação sem enxergar escore.
+
+---
+
+## D-027 · Telas desenhadas por comportamento, e o modo sem números vira ausência garantida em três camadas
 **11/08/2026**
 
 **Contexto.** Últimas tarefas da fase 1: telas do paciente, telas do profissional, e o modo sem números como estado de primeira classe em vez de flag de exibição. O material para derivá-las já existia todo no protocolo 1.4.0 e no modelo de dados.
@@ -346,3 +372,4 @@ Decisões que rendem post por contarem uma reviravolta, e não só um resultado:
 | "O validador que impede o documento clínico e o código de divergirem" | D-006 |
 | "Desenhar o banco encontrou um furo no protocolo que a leitura clínica não pegou" | D-021 |
 | "Levei a decisão a dois revisores e eles se contradisseram no ponto mais perigoso" | D-024 |
+| "O teste de segurança falhou antes do primeiro paciente — e era para isso que ele existia" | D-025 |
